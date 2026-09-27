@@ -3,7 +3,13 @@
 # 🕌 WitrQuran
 
 <a href="https://witrquran.vercel.app">
-  <img src="https://readme-typing-svg.demolab.com?font=Cinzel&weight=700&size=24&duration=3500&pause=1000&color=10B981&center=true&vCenter=true&width=650&lines=بِسْمِ+اللَّهِ+الرَّحْمَٰنِ+الرَّحِيمِ;Listen+to+the+Holy+Quran+with+Clarity+and+Peace;100%25+Free+•+Zero+Ads+•+Self-Hosted+Privacy;Zakat+•+Prayer+Times+•+Qibla+•+Hijri+Calendar" alt="WitrQuran Typing Animation" />
+  <img src="https://raw.githubusercontent.com/witrfaruk/WitrQuran/main/public/logo.png" width="90" height="90" alt="WitrQuran Logo" />
+</a>
+
+<br/>
+
+<a href="https://witrquran.vercel.app">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=620&lines=Listen+to+the+Holy+Quran+with+Peace;100%25+Free+•+Zero+Ads+•+Open+Source;Zakat+•+Prayer+Times+•+3D+Qibla+•+Hijri;Built+with+Astro+and+React" alt="WitrQuran Typing Animation" />
 </a>
 
 <p align="center">
