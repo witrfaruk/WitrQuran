@@ -1,0 +1,192 @@
+.pageContainer {
+  min-height: 80vh;
+  padding: 4rem 1.5rem 6rem;
+  max-width: 920px;
+  margin: 0 auto;
+  color: #e2e8f0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted, #94a3b8);
+  margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+  color: var(--emerald, #10b981);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(45, 120, 140, 0.2);
+}
+
+.title {
+  font-family: var(--font-heading), serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.lastUpdated {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.content {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.content h2 {
+  font-family: var(--font-heading), serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--emerald-bright, #34d399);
+  margin: 1.75rem 0 0.75rem;
+}
+
+.content p {
+  margin-bottom: 1.25rem;
+  color: #cbd5e1;
+}
+
+.content strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.content ul {
+  margin: 1rem 0 1.5rem 1.5rem;
+  list-style: disc;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+  color: #cbd5e1;
+}
+
+.content a {
+  color: var(--emerald, #10b981);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+}
+
+.content a:hover {
+  color: var(--emerald-bright, #34d399);
+  border-bottom-color: var(--emerald-bright, #34d399);
+}
+
+.calloutCard {
+  background: rgba(7, 34, 46, 0.65);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin: 2rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.calloutCard p:last-child {
+  margin-bottom: 0;
+}
+
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.socialCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(8, 36, 49, 0.6);
+  border: 1px solid rgba(45, 120, 140, 0.35);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.socialCard:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--emerald, #10b981);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+}
+
+.socialCardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.socialCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.socialCardTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.socialCardSub {
+  font-size: 0.82rem;
+  color: var(--muted, #94a3b8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  .content h2 {
+    font-size: 1.35rem;
+  }
+  .socialGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,7 +1,7 @@
 .card {
   position: relative;
-  background: linear-gradient(135deg, #3E2421 0%, #231210 100%);
-  border-radius: 16px;
+  background: var(--surface-card);
+  border-radius: 4px;
   padding: 3rem 1.5rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -10,8 +10,15 @@
   text-align: center;
   overflow: hidden;
   height: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(226, 143, 143, 0.1);
+  box-shadow: 6px 6px 0 var(--shadow-neo);
+  border: 2px solid var(--border-neo);
+  transition: all 0.18s ease;
+}
+
+.card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+  border-color: var(--emerald);
 }
 
 .card::before {
@@ -19,8 +26,8 @@
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   background: 
-    radial-gradient(circle at 100% 0%, rgba(226, 143, 143, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 0% 100%, rgba(226, 143, 143, 0.12) 0%, transparent 60%);
+    radial-gradient(circle at 100% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -34,12 +41,12 @@
 
 .quoteMark {
   margin-bottom: 1.5rem;
-  color: #D48B8B;
+  color: var(--emerald-bright);
   opacity: 0.9;
 }
 
 .quoteMark svg {
-  fill: #D48B8B;
+  fill: var(--emerald-bright);
 }
 
 .quoteTextContainer {
@@ -51,10 +58,10 @@
 }
 
 .quoteText {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: clamp(1.1rem, 4vw, 1.4rem);
-  font-weight: 400;
-  color: #FDFBF7;
+  font-weight: 500;
+  color: #ffffff;
   line-height: 1.6;
   max-width: 92%;
   margin-bottom: 1.5rem;
@@ -62,8 +69,8 @@
 
 .surahInfo {
   font-size: clamp(0.9rem, 3vw, 1rem);
-  color: #D48B8B;
-  font-weight: 500;
+  color: var(--emerald-bright);
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,13 +78,13 @@
 }
 
 .surahName {
-  color: #D48B8B;
-  font-weight: 600;
+  color: var(--emerald-bright);
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 .ayahNum {
-  color: rgba(212, 139, 139, 0.8);
+  color: var(--muted);
   font-size: 0.9em;
 }
 
@@ -89,11 +96,11 @@
 }
 
 .diamond {
-  width: 5px;
-  height: 5px;
-  background-color: #D48B8B;
+  width: 6px;
+  height: 6px;
+  background-color: var(--emerald);
   transform: rotate(45deg);
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .actions {
@@ -108,22 +115,26 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #D48B8B;
+  color: var(--muted);
   font-size: 0.95rem;
-  background: none;
-  border: none;
+  background: rgba(4, 24, 34, 0.8);
+  border: 2px solid var(--border-neo);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  font-weight: 500;
+  transition: all 0.15s ease;
+  font-weight: 600;
 }
 
 .actionBtn:hover {
-  opacity: 0.8;
-  transform: translateY(-1px);
+  color: var(--emerald-bright);
+  border-color: var(--emerald);
+  transform: translate(1px, 1px);
 }
 
 .actionBtn svg {
-  stroke: #D48B8B;
+  stroke: currentColor;
 }
 
 /* Toast */
@@ -132,11 +143,14 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #03141d;
+  border: 2px solid var(--emerald);
+  box-shadow: 4px 4px 0 var(--shadow-neo);
   color: #fff;
   padding: 8px 16px;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 0.85rem;
+  font-weight: 700;
   z-index: 100;
   animation: fadeOut 3s forwards;
   pointer-events: none;
@@ -163,3 +177,4 @@
     line-height: 1.5;
   }
 }
+

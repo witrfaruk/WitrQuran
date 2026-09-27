@@ -1,0 +1,236 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  padding-bottom: 5rem;
+  padding-top: 5.5rem;
+}
+
+/* HERO SECTION */
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem 2rem;
+  position: relative;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.65rem;
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* SEARCH BAR & FILTERS */
+.searchBarWrapper {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--surface-card);
+  border: 2px solid var(--border-neo);
+  box-shadow: 4px 4px 0 var(--shadow-neo);
+  border-radius: 4px;
+  padding: 0.85rem 1.25rem;
+  gap: 0.85rem;
+  transition: all 0.15s ease;
+}
+
+.searchBar:focus-within {
+  border-color: var(--emerald);
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+}
+
+.searchIcon {
+  color: var(--emerald-bright);
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 1rem;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  color: #ffffff;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--muted);
+}
+
+.clearBtn {
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 2px;
+  transition: color 0.2s ease;
+}
+
+.clearBtn:hover {
+  color: #ffffff;
+}
+
+/* Filter Pills */
+.filterPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.filterPill {
+  font-family: var(--font-inter);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 1.15rem;
+  background: rgba(4, 24, 34, 0.8);
+  border: 2px solid var(--border-neo);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  color: var(--muted);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filterPill:hover {
+  color: #ffffff;
+  border-color: var(--emerald);
+}
+
+.activeFilterPill {
+  background: var(--emerald);
+  color: #03141d !important;
+  border-color: #03141d !important;
+  box-shadow: 2px 2px 0 var(--shadow-neo) !important;
+}
+
+/* CONTENT SECTION */
+.contentSection {
+  width: 100%;
+}
+
+.resultsInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 1.75rem;
+  padding: 0 0.25rem;
+}
+
+.resultsInfo strong {
+  color: var(--emerald-bright);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.noResults {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.noResults p {
+  font-size: 1.1rem;
+}
+
+.resetBtn {
+  background: var(--emerald);
+  color: #03141d;
+  font-weight: 700;
+  border: 2px solid #03141d;
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+  padding: 0.65rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.resetBtn:hover {
+  background: var(--emerald-bright);
+  transform: translate(1px, 1px);
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageWrapper {
+    padding-top: 4.5rem;
+  }
+
+  .heroSection {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.15rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroTitle {
+    font-size: 1.85rem;
+  }
+}

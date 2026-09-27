@@ -1,4 +1,4 @@
-import { Surah } from '@/types/surah';
+import type { Surah } from '@/types/surah';
 
 const LAST_LISTENED_KEY = 'quran_last_listened';
 const PREFERENCES_KEY = 'quran_preferences';

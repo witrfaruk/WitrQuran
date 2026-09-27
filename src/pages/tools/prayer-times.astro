@@ -1,0 +1,248 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PrayerTimes from '../../components/tools/PrayerTimes';
+import styles from '../../styles/legal.module.css';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'WitrQuran Prayer Times & Live Salah Countdown',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All',
+    url: 'https://witrquran.vercel.app/tools/prayer-times',
+    description: 'Accurate Islamic prayer times (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) for cities worldwide with live countdown, GPS location detection, and calculation method customizer.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD'
+    }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What are the five prescribed prayer times in Islam?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The five mandatory daily prayers (Salah) are: 1. Fajr (Dawn prayer, starting at true dawn and ending at sunrise), 2. Dhuhr (Noon prayer, starting just after the sun crosses its zenith / Zawal), 3. Asr (Late afternoon prayer, starting when an object’s shadow equals or doubles its length), 4. Maghrib (Sunset prayer, starting immediately upon sunset), and 5. Isha (Night prayer, starting when astronomical twilight disappears).'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Why do Asr prayer times differ between Hanafi and Shafi’i schools?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The difference arises from interpreting the Hadith describing shadow length. In the Shafi’i, Maliki, and Hanbali schools (the Standard / Jumhur method), Asr begins when the shadow of a vertical object equals its actual height plus its shadow at solar noon (1x shadow length). In the Hanafi school, Asr begins when the shadow becomes twice the length of the object plus its noon shadow (2x shadow length), which is approximately 45 to 60 minutes later.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How are prayer times calculated at high latitudes in summer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'In extreme northern or southern regions where true twilight never disappears (persistent twilight) or the sun does not set, Islamic jurists recommend adopting one of three standardized adjustment principles: Aqrab al-Bilad (matching the prayer times of the nearest moderate latitude city), proportional division of the night (Nisf al-Layl / middle of the night principle), or following Makkah standard timing.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the forbidden time to pray voluntary prayers (Nafilah)?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Prophet Muhammad ﷺ prohibited offering voluntary prayers during three specific solar intervals: 1. From after Fajr until the sun has completely risen above the horizon by the length of a spear (approx. 15-20 minutes after sunrise / Ishraq), 2. When the sun is at its exact meridian peak (Istawa / exact solar noon) until it begins to decline, and 3. After the Asr prayer until the sun has fully disappeared beneath the horizon.'
+        }
+      }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://witrquran.vercel.app'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Islamic Tools',
+        item: 'https://witrquran.vercel.app/tools'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Prayer Times',
+        item: 'https://witrquran.vercel.app/tools/prayer-times'
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Prayer Times Today: Accurate Salah Schedule & Live Next-Prayer Countdown"
+  description="Accurate daily Islamic prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha) for any city worldwide with GPS auto-detection, customizable calculation methods, and comprehensive Salah rules."
+  canonical="https://witrquran.vercel.app/tools/prayer-times"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class={styles.pageContainer}>
+    <nav class={styles.breadcrumb} aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/tools">Tools</a>
+      <span>/</span>
+      <span>Prayer Times</span>
+    </nav>
+
+    <header class={styles.header}>
+      <h1 class={styles.title}>Prayer Times &amp; Live Salah Schedule</h1>
+      <p style="color: #94a3b8; font-size: 1.05rem; max-width: 760px; line-height: 1.6; margin-top: 0.5rem;">
+        View accurate daily prayer timings for your location with real-time countdown to the next Salah. Configured with standard astronomical methods and juristic parameters.
+      </p>
+    </header>
+
+    {/* Interactive React Prayer Times Widget */}
+    <PrayerTimes client:load />
+
+    {/* 900+ Words Deep-Dive Educational Guide */}
+    <article class={styles.content}>
+      <h2>The Divine Obligation of Salah at Appointed Times</h2>
+      <p>
+        The ritual prayer (Salah / صلاة) is the second pillar of Islam and the foremost physical act of worship connecting the servant directly to their Creator. In the Holy Quran, Almighty Allah emphasizes that prayers are not arbitrary in their timing, but are strictly tied to the celestial movement of the sun across the heavens:
+      </p>
+
+      <blockquote>
+        <p><em>"Indeed, prayer has been decreed upon the believers a decree of specified times."</em> (Surah An-Nisa 4:103)</p>
+      </blockquote>
+
+      <p>
+        In Surah Al-Isra (17:78), Allah SWT outlines the cycle of daily worship:
+      </p>
+
+      <blockquote>
+        <p><em>"Establish prayer at the decline of the sun from its meridian until the darkness of the night and [also] the Quran of dawn. Indeed, the recitation of dawn is ever witnessed."</em> (Surah Al-Isra 17:78)</p>
+      </blockquote>
+
+      <p>
+        Maintaining the five daily prayers at their prescribed earliest times (Awwal al-Waqt) is described by the Prophet Muhammad ﷺ as the most beloved deed to Allah. When asked, <em>"Which deed is best?"</em> the Prophet ﷺ replied: <strong>"Prayer offered at its proper time."</strong> (Sahih al-Bukhari &amp; Sahih Muslim).
+      </p>
+
+      <h2>The Five Daily Prayer Intervals Explained</h2>
+
+      <h3>1. Fajr (The Dawn Prayer - صلاة الفجر)</h3>
+      <p>
+        The Fajr prayer window commences at <strong>Subh Sadiq</strong> (True Dawn)—the moment a horizontal white thread of light appears across the eastern horizon. It must be completed before the upper edge of the sun's disc rises above the horizon (Sunrise / Shuruq). Astronomical conventions measure Fajr when the sun is between 15° to 18.5° below the eastern horizon.
+      </p>
+
+      <h3>2. Dhuhr (The Midday / Noon Prayer - صلاة الظهر)</h3>
+      <p>
+        Dhuhr begins immediately following <strong>Zawal</strong> (the moment the sun passes its highest zenith at solar noon and begins its descent westward). It continues until the beginning of Asr time. It is recommended to perform Dhuhr slightly after Zawal to avoid praying during the prohibited meridian stillness.
+      </p>
+
+      <h3>3. Asr (The Afternoon Prayer - صلاة العصر)</h3>
+      <p>
+        The Quran specifically honors Asr as <em>As-Salat Al-Wusta</em> (The Middle Prayer): <em>"Maintain with care the [obligatory] prayers and [in particular] the middle prayer and stand before Allah, devoutly obedient."</em> (Surah Al-Baqarah 2:238).
+      </p>
+      <p>
+        Asr begins when the shadow of an object equals its own height (Standard / Shafi'i method) or double its height (Hanafi method) plus the shadow length at midday. It ends when the sun begins to set.
+      </p>
+
+      <h3>4. Maghrib (The Sunset Prayer - صلاة المغرب)</h3>
+      <p>
+        Maghrib begins the exact instant the entire solar disc disappears completely beneath the western horizon. The prayer window is relatively brief, continuing until the red or white twilight (Shafaq) has disappeared from the evening sky.
+      </p>
+
+      <h3>5. Isha (The Night Prayer - صلاة العشاء)</h3>
+      <p>
+        Isha begins when the evening twilight (Shafaq al-Ahmar or Shafaq al-Abyad) has completely faded, leaving the sky fully dark. This occurs when the sun reaches approximately 15° to 18° below the western horizon. Its preferred time extends until the first third or middle of the night (Nisf al-Layl).
+      </p>
+
+      <h2>Astronomical Methods &amp; Twilight Angles Compared</h2>
+      <p>
+        Because the Earth's atmosphere refracts light, modern calculation algorithms utilize sun altitude angle conventions approved by international Islamic authorities:
+      </p>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border-neo); text-align: left;">
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Calculation Authority</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Fajr Angle</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Isha Angle / Parameter</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Primary Regions Used</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>Muslim World League (MWL)</strong></td>
+            <td style="padding: 0.75rem;">18.0°</td>
+            <td style="padding: 0.75rem;">17.0°</td>
+            <td style="padding: 0.75rem;">Europe, Far East, parts of America</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>ISNA (North America)</strong></td>
+            <td style="padding: 0.75rem;">15.0°</td>
+            <td style="padding: 0.75rem;">15.0°</td>
+            <td style="padding: 0.75rem;">USA, Canada</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>Umm Al-Qura (Makkah)</strong></td>
+            <td style="padding: 0.75rem;">18.5°</td>
+            <td style="padding: 0.75rem;">90 min after Maghrib (120 in Ramadan)</td>
+            <td style="padding: 0.75rem;">Arabian Peninsula &amp; Gulf countries</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem;"><strong>Univ. of Islamic Sciences Karachi</strong></td>
+            <td style="padding: 0.75rem;">18.0°</td>
+            <td style="padding: 0.75rem;">18.0°</td>
+            <td style="padding: 0.75rem;">Pakistan, India, Bangladesh, Afghanistan</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Forbidden Times for Prayer (Awqat al-Nahy)</h2>
+      <p>
+        The Prophet Muhammad ﷺ explicitly prohibited offering voluntary prayers (Nawafil) during three specific daily periods to distance Islamic monotheism from pagan sun-worship practices:
+      </p>
+      <ul>
+        <li><strong>From sunrise until Ishraq:</strong> For approximately 15 to 20 minutes after the upper rim of the sun appears until it rises to the height of a spear.</li>
+        <li><strong>During exact solar zenith (Istawa):</strong> For approximately 5 to 10 minutes right before Dhuhr time when the sun is directly overhead.</li>
+        <li><strong>From after Asr until full sunset:</strong> During the yellowing and setting of the sun into the horizon.</li>
+      </ul>
+
+      <h2>Tahajjud &amp; The Last Third of the Night (Qiyam al-Layl)</h2>
+      <p>
+        In addition to the five mandatory prayers, the Holy Quran and prophetic traditions extol the unmatched spiritual status of <strong>Tahajjud</strong> (the voluntary night prayer). Allah SWT praises those who awaken in the depth of the night in Surah As-Sajdah (32:16): <em>"They arise from [their] beds; they supplicate their Lord in fear and aspiration, and from what We have provided them, they spend."</em>
+      </p>
+      <p>
+        The most virtuous period for offering Tahajjud is during <strong>the last third of the night</strong> (<em>Al-Thuluth Al-Akhir</em>). To calculate this golden interval precisely:
+      </p>
+      <ol>
+        <li>Calculate the total span between sunset (Maghrib) and the following day's dawn (Fajr).</li>
+        <li>Divide the total duration by 3.</li>
+        <li>Subtract this one-third value from Fajr time. The remaining window leading into Fajr constitutes the final third of the night, when Allah descends to the lowest heaven in a manner befitting His Majesty, answering supplications and forgiving those who ask.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions About Prayer Times</h2>
+
+      <h3>1. What should I do if I miss a prayer due to sleep or forgetfulness?</h3>
+      <p>
+        The Prophet Muhammad ﷺ stated: <em>"Whoever forgets a prayer or sleeps through its time, its expiation is that he prays it as soon as he remembers it; there is no other expiation for it."</em> (Sahih al-Bukhari). You should perform the missed prayer immediately upon waking or remembering.
+      </p>
+
+      <h3>2. How is the middle of the night (Nisf al-Layl) calculated for Isha?</h3>
+      <p>
+        To determine the middle of the night, calculate the total duration in hours and minutes between sunset (Maghrib) and the following day's dawn (Fajr), divide that time in half, and add it to Maghrib time. For example, if Maghrib is at 6:00 PM and Fajr is at 4:00 AM (a 10-hour span), Nisf al-Layl is at 11:00 PM (5 hours after Maghrib).
+      </p>
+
+      <h3>3. Is it permissible to combine Dhuhr &amp; Asr or Maghrib &amp; Isha?</h3>
+      <p>
+        Combining prayers (Jam') is explicitly permitted during lawful travel (Safar), torrential rain or severe snowstorms, and extreme medical or safety necessity, as established in the authentic Sunnah of the Prophet Muhammad ﷺ.
+      </p>
+    </article>
+  </div>
+</Layout>

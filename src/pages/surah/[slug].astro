@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SurahPlayerView from '../../components/player/SurahPlayerView';
+import { getAudioUrl } from '../../config';
+import surahsData from '../../data/surahs.json';
+import type { Surah } from '../../types/surah';
+
+export async function getStaticPaths() {
+  const surahs = surahsData as Surah[];
+  return surahs.map((surah, index) => {
+    const prevSurah = index > 0 ? surahs[index - 1] : null;
+    const nextSurah = index < surahs.length - 1 ? surahs[index + 1] : null;
+    return {
+      params: { slug: surah.slug },
+      props: { surah, prevSurah, nextSurah },
+    };
+  });
+}
+
+const { surah, prevSurah, nextSurah } = Astro.props;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://witrquran.vercel.app' },
+      { '@type': 'ListItem', position: 2, name: 'Surahs', item: 'https://witrquran.vercel.app/surahs' },
+      { '@type': 'ListItem', position: 3, name: `Surah ${surah.transliteration}`, item: `https://witrquran.vercel.app/surah/${surah.slug}` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AudioObject',
+    name: `Surah ${surah.transliteration} (${surah.arabicName}) Recitation`,
+    description: `Complete audio recitation of Surah ${surah.transliteration} (${surah.englishName}), chapter ${surah.id} of the Holy Quran, recited by Sheikh Mahmoud Khalil Al-Hussary.`,
+    encodingFormat: 'audio/mpeg',
+    contentUrl: getAudioUrl(surah.id),
+    duration: 'PT15M',
+    inLanguage: 'ar',
+    performer: {
+      '@type': 'Person',
+      name: 'Mahmoud Khalil Al-Hussary',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `How many ayahs (verses) are in Surah ${surah.transliteration}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Surah ${surah.transliteration} (${surah.arabicName}) contains ${surah.totalAyahs} ayahs and was revealed in ${surah.revelationType}.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `What is the English meaning of Surah ${surah.transliteration}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `The English translation and title of Surah ${surah.transliteration} is "${surah.englishName}".`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `Where can I listen to Surah ${surah.transliteration} for free without ads?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `You can listen to Surah ${surah.transliteration} online for free without ads, registration, or interruptions on WITRQURAN at https://witrquran.vercel.app/surah/${surah.slug}.`,
+        },
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: `Surah ${surah.transliteration} - Listen Online Free | WITRQURAN`,
+    description: `Listen to Surah ${surah.transliteration} (${surah.englishName}). Revealed in ${surah.revelationType}, containing ${surah.totalAyahs} ayahs. Free high-quality recitation by Sheikh Mahmoud Khalil Al-Hussary.`,
+    url: `https://witrquran.vercel.app/surah/${surah.slug}`,
+    inLanguage: ['en', 'ar'],
+  },
+];
+---
+
+<Layout
+  title={`Surah ${surah.transliteration} (${surah.arabicName}) | WITRQURAN`}
+  description={`Listen to Surah ${surah.transliteration} (${surah.englishName}). Revealed in ${surah.revelationType}, containing ${surah.totalAyahs} ayahs. Free high-quality audio recitation.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <SurahPlayerView
+    client:load
+    surah={surah}
+    prevSurah={prevSurah}
+    nextSurah={nextSurah}
+    allSurahs={surahsData as Surah[]}
+  />
+</Layout>

@@ -1,0 +1,545 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-bottom: 2rem;
+  padding-top: 5.5rem;
+}
+
+/* 1. HERO SECTION */
+.heroSection {
+  width: 100%;
+  padding: 2.5rem 0 3.5rem;
+  position: relative;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  background: rgba(4, 24, 34, 0.8);
+  border: 2px solid var(--border-neo);
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--emerald-bright);
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.12;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.heroAccent {
+  color: var(--emerald-bright);
+  text-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.heroButtonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.heroTrustRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.trustItem svg {
+  color: var(--emerald);
+}
+
+/* Hero Right: 2x2 Showcase */
+.heroShowcaseWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.showcaseColRight {
+  padding-top: 2rem;
+}
+
+.showcaseBadge {
+  margin: 1.75rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: var(--emerald);
+  color: #03141d;
+  padding: 0.6rem 1.5rem;
+  border: 2px solid #03141d;
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+  border-radius: 6px;
+  width: fit-content;
+  text-align: center;
+}
+
+.badgeNumber {
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.badgeLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+}
+
+/* SECTION HEADER & DIVIDER */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.65rem;
+}
+
+.sectionSubtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* 2. POPULAR SURAHS */
+.popularSection {
+  width: 100%;
+}
+
+.popularGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+}
+
+/* 3. ALL SURAHS */
+.allSurahsSection {
+  width: 100%;
+}
+
+.surahGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.15rem;
+  margin-bottom: 2.75rem;
+}
+
+.viewAllWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* 4. MISSION / OUR STORY SECTION */
+.missionSection {
+  width: 100%;
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(4, 20, 29, 0.5);
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.missionCard {
+  border: 2px solid var(--border-neo);
+  box-shadow: 6px 6px 0 var(--shadow-neo);
+  border-radius: 4px;
+  background: linear-gradient(145deg, #051e2b 0%, #03151f 100%);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  gap: 1.35rem;
+}
+
+.missionPatternOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(16, 185, 129, 0.12) 1px, transparent 0);
+  background-size: 18px 18px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.missionCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.missionCardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid var(--border-neo);
+  color: var(--emerald-bright);
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.missionCardSurahBadge {
+  font-family: var(--font-inter);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--emerald-bright);
+  background: rgba(4, 24, 34, 0.9);
+  border: 1px solid var(--border-neo);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+}
+
+.missionArabicVerse {
+  font-family: var(--font-arabic);
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: var(--emerald-bright);
+  text-align: center;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+  padding: 0.25rem 0;
+}
+
+.quoteBox {
+  position: relative;
+  z-index: 1;
+  background: rgba(3, 16, 23, 0.85);
+  border: 1px solid var(--border-neo);
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+  border-radius: 4px;
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quoteIcon {
+  color: var(--emerald);
+  opacity: 0.9;
+}
+
+.quoteText {
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+}
+
+.quoteFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.quoteRef {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--emerald-bright);
+  letter-spacing: 0.02em;
+}
+
+.quoteSub {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.missionContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.missionTitle {
+  font-family: var(--font-heading);
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.missionParagraph {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.statBox {
+  background: var(--surface-card);
+  border: 2px solid var(--border-neo);
+  box-shadow: 4px 4px 0 var(--shadow-neo);
+  padding: 1.15rem 1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.statValue {
+  font-family: var(--font-inter);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--emerald-bright);
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* 5. FEATURES / CRAFTED EXPERIENCE */
+.featuresSection {
+  width: 100%;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.featureCard {
+  background: var(--surface-card);
+  border: 2px solid var(--border-neo);
+  box-shadow: 5px 5px 0 var(--shadow-neo);
+  border-radius: 4px;
+  padding: 1.75rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featureCard:hover {
+  transform: translate(2px, 2px);
+  border-color: var(--emerald);
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+}
+
+.featureIconBox {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--border-neo);
+  background: rgba(4, 24, 34, 0.8);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  border-radius: 4px;
+  color: var(--emerald-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.featureTitle {
+  font-family: var(--font-inter);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.featureDescription {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1200px) {
+  .heroGrid {
+    gap: 2.5rem;
+  }
+
+  .popularGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .surahGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .missionGrid {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroTitle {
+    font-size: 2.85rem;
+  }
+
+  .missionGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .missionCard {
+    padding: 1.75rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .surahGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    gap: 3.5rem;
+    padding-top: 4.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .missionArabicVerse {
+    font-size: 1.85rem;
+  }
+
+  .popularGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .surahGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .popularGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .surahGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroButtonRow {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heroButtonRow a {
+    width: 100%;
+  }
+
+  .missionCard {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .missionArabicVerse {
+    font-size: 1.55rem;
+  }
+
+  .quoteBox {
+    padding: 1rem;
+  }
+
+  .quoteText {
+    font-size: 0.9rem;
+  }
+}

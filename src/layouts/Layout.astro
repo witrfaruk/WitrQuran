@@ -1,0 +1,291 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/globals.css';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import ScrollToTop from '../components/layout/ScrollToTop';
+import PwaRegister from '../components/pwa/PwaRegister';
+import GlobalBottomPlayer from '../components/player/GlobalBottomPlayer';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+  image?: string;
+  type?: string;
+}
+
+const {
+  title = 'WITRQURAN - Free Online Quran Listening',
+  description = 'Listen to the Holy Quran online for free. Premium, distraction-free audio experience with 114 Surahs. No registration, no ads, completely free forever.',
+  canonical,
+  noindex = false,
+  image = 'https://witrquran.vercel.app/android-chrome-512x512.png',
+  type = 'website',
+} = Astro.props;
+
+const pageTitle = title.includes('WITRQURAN') ? title : `${title} | WITRQURAN`;
+const canonicalUrl = canonical || (Astro.url.href ? Astro.url.href.replace(/\/$/, '') : 'https://witrquran.vercel.app');
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'WITRQURAN',
+    alternateName: ['WitrQuran', 'Witr Quran', 'WitrQuran Online'],
+    url: 'https://witrquran.vercel.app',
+    description: 'Listen to the Holy Quran online for free with crystal-clear recitation of 114 Surahs by Sheikh Mahmoud Khalil Al-Hussary and access precision Islamic tools.',
+    inLanguage: ['en', 'ar'],
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://witrquran.vercel.app/surahs?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: [
+      {
+        '@type': 'SiteNavigationElement',
+        position: 1,
+        name: 'All Surahs (114 Surahs)',
+        description: 'Listen to all 114 Surahs of the Holy Quran recited by Sheikh Mahmoud Khalil Al-Hussary.',
+        url: 'https://witrquran.vercel.app/surahs',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 2,
+        name: 'Islamic Tools & Utilities',
+        description: 'Suite of free, privacy-first Islamic utilities including Zakat, Prayer Times, Qibla and Hijri converter.',
+        url: 'https://witrquran.vercel.app/tools',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 3,
+        name: 'Zakat Calculator',
+        description: 'Calculate 2.5% Zakat on cash, gold, silver, investments, and business stock against real-time Nisab.',
+        url: 'https://witrquran.vercel.app/tools/zakat-calculator',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 4,
+        name: 'Daily Prayer Times',
+        description: 'Pinpoint astronomical Fajr, Dhuhr, Asr, Maghrib, and Isha times for any city worldwide with a live countdown.',
+        url: 'https://witrquran.vercel.app/tools/prayer-times',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 5,
+        name: '3D Qibla Compass Finder',
+        description: 'Interactive 3D compass dial pointing directly towards the Holy Kaaba in Makkah with GPS auto-detection.',
+        url: 'https://witrquran.vercel.app/tools/qibla-finder',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 6,
+        name: 'Hijri Date Converter',
+        description: 'Convert between Gregorian and Islamic lunar dates with Umm al-Qura moon-sighting adjustments.',
+        url: 'https://witrquran.vercel.app/tools/hijri-converter',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 7,
+        name: 'About WitrQuran',
+        description: 'Our mission and devotion to keeping the Holy Quran 100% free and accessible to all humanity.',
+        url: 'https://witrquran.vercel.app/about',
+      }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'WITRQURAN',
+    url: 'https://witrquran.vercel.app',
+    logo: 'https://witrquran.vercel.app/logo.png',
+    sameAs: [
+      'https://github.com/witrfaruk/WitrQuran',
+      'https://witrfaruk.com',
+      'https://x.com/witrfaruk',
+      'https://www.linkedin.com/in/witrfaruk',
+      'https://www.instagram.com/witrfaruk'
+    ],
+    founder: {
+      '@type': 'Person',
+      name: 'Md Faruk Abdulla',
+      url: 'https://witrfaruk.com',
+      jobTitle: 'Founder & Software Engineer',
+      sameAs: [
+        'https://github.com/witrfaruk',
+        'https://witrfaruk.com',
+        'https://x.com/witrfaruk',
+        'https://www.linkedin.com/in/witrfaruk',
+        'https://www.instagram.com/witrfaruk'
+      ],
+    },
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#121212" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Robots Directives -->
+    {noindex ? (
+      <meta name="robots" content="noindex, follow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="google90004f821ac4a959" />
+
+    <!-- Primary Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Quran, Listen Quran, Holy Quran, Quran Audio, Islam, Free Quran, WITRQURAN, Surah, Mahmoud Khalil Al-Hussary, Zakat Calculator, Prayer Times, Qibla Finder, Hijri Converter" />
+    <meta name="author" content="Md Faruk Abdulla" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="WITRQURAN" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+    <meta name="twitter:creator" content="@witrfaruk" />
+
+    <!-- Icons & Manifest -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Audio Preconnections -->
+    <link rel="preconnect" href="https://server13.mp3quran.net" />
+    <link rel="dns-prefetch" href="https://server13.mp3quran.net" />
+    <link rel="preconnect" href="https://download.quranicaudio.com" />
+    <link rel="dns-prefetch" href="https://download.quranicaudio.com" />
+
+    <!-- JSON-LD Structured Data for Search & Sitelinks -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Astro View Transitions (Client Router for seamless audio playback across pages) -->
+    <ClientRouter />
+  </head>
+  <body>
+    <PwaRegister client:load />
+    <ScrollToTop client:load />
+    
+    <div style="position: relative; z-index: 0; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
+      <Navbar client:load transition:persist="navbar" />
+      
+      <main style="flex: 1; position: relative; padding-top: clamp(5.5rem, 8vw, 7rem); padding-bottom: 80px;">
+        <slot />
+      </main>
+      
+      <Footer client:load />
+    </div>
+
+    <!-- Persistent Global Audio Player -->
+    <GlobalBottomPlayer client:load transition:persist="global-player" />
+
+    <!-- Client-side Scripts: Scroll to Top on Refresh & DevTools/Copy Protection -->
+    <script is:inline>
+      (function() {
+        // 1. Force Scroll to Top on Page Load & Refresh
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+        document.addEventListener('astro:page-load', function() {
+          window.scrollTo(0, 0);
+        });
+
+        // 2. Disable Context Menu (Right Click)
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          return false;
+        });
+
+        // 3. Disable DevTools Shortcuts & Source Viewing
+        document.addEventListener('keydown', function(e) {
+          // F12 key
+          if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+          }
+          // Ctrl+Shift+I (Inspect), Ctrl+Shift+J (Console), Ctrl+Shift+C (Inspect Element)
+          if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+            e.preventDefault();
+            return false;
+          }
+          // Ctrl+U (View Source), Ctrl+S (Save Page)
+          if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's')) {
+            e.preventDefault();
+            return false;
+          }
+        });
+
+        // 4. Disable Selection & Double-Click Highlight completely
+        document.addEventListener('selectstart', function(e) {
+          if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) {
+            return true;
+          }
+          e.preventDefault();
+          return false;
+        });
+
+        document.addEventListener('mousedown', function(e) {
+          if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) {
+            return true;
+          }
+          if (e.detail > 1) {
+            e.preventDefault();
+          }
+        });
+
+        document.addEventListener('dblclick', function(e) {
+          if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) {
+            return true;
+          }
+          e.preventDefault();
+          if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+          }
+          return false;
+        });
+
+        document.addEventListener('selectionchange', function() {
+          var activeEl = document.activeElement;
+          if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable)) {
+            return;
+          }
+          var sel = window.getSelection();
+          if (sel && sel.rangeCount > 0 && !sel.isCollapsed) {
+            sel.removeAllRanges();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

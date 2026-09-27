@@ -1,0 +1,422 @@
+.bottomPlayer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(3, 20, 29, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 2px solid var(--border-neo);
+  box-shadow: 0 -4px 0 var(--shadow-neo);
+  padding: 10px 24px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.playerInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  align-items: center;
+  gap: 20px;
+}
+
+/* LEFT: SURAH INFO */
+.surahInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.numberBadge {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  background: rgba(4, 24, 34, 0.9);
+  border: 2px solid var(--border-neo);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  color: var(--emerald-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.textDetails {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.surahName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.arabicName {
+  font-family: var(--font-arabic);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--emerald-bright);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CENTER: PLAYBACK CONTROLS & TIMELINE */
+.centerControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.controlBtn {
+  background: rgba(4, 24, 34, 0.8);
+  border: 2px solid var(--border-neo);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  color: var(--muted);
+  min-width: 38px;
+  height: 38px;
+  padding: 0 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.controlBtn:hover {
+  color: #ffffff;
+  border-color: var(--emerald);
+  transform: translate(1px, 1px);
+}
+
+.speedBtn {
+  min-width: 48px;
+  padding: 0 8px;
+}
+
+.activeControlBtn {
+  color: var(--emerald-bright) !important;
+  border-color: var(--emerald-bright) !important;
+}
+
+.playPauseBtn {
+  background: var(--emerald);
+  border: 2px solid #03141d;
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+  color: #03141d;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.playPauseBtn:hover {
+  background: var(--emerald-bright);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--shadow-neo);
+}
+
+.speedBadge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--emerald-bright);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* TIMELINE SCRUBBER */
+.timelineRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.timeText {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+  text-align: center;
+}
+
+.scrubberWrapper {
+  flex: 1;
+  position: relative;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.scrubberTrack {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: rgba(4, 24, 34, 0.9);
+  border: 1px solid var(--border-neo);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bufferBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  transition: width 0.2s ease;
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: var(--emerald);
+  border-radius: 2px;
+}
+
+.scrubberInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  z-index: 2;
+}
+
+/* RIGHT: EXTRA CONTROLS (VOLUME, TIMER) */
+.rightControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.timerBtn {
+  background: rgba(4, 24, 34, 0.8);
+  border: 2px solid var(--border-neo);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.timerBtn:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--emerald);
+  color: var(--emerald-bright);
+}
+
+.timerActive {
+  border-color: var(--emerald-bright) !important;
+  color: var(--emerald-bright) !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+}
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.volumeSlider {
+  width: 75px;
+  height: 4px;
+  accent-color: var(--emerald);
+  cursor: pointer;
+}
+
+.closePlayerBtn {
+  min-width: 36px;
+  height: 36px;
+  color: var(--muted);
+  border-radius: 4px;
+}
+
+.closePlayerBtn:hover {
+  color: #f87171 !important;
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+  transform: translate(1px, 1px);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 960px) {
+  .playerInner {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .centerControls {
+    order: 3;
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+
+  .rightControls {
+    order: 2;
+  }
+
+  .volumeControl {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .bottomPlayer {
+    padding: 8px 12px 10px;
+    gap: 6px;
+  }
+
+  .numberBadge {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .surahName {
+    font-size: 0.9rem;
+  }
+
+  .arabicName {
+    font-size: 1rem;
+  }
+
+  .buttonRow {
+    gap: 8px;
+  }
+
+  .controlBtn {
+    min-width: 34px;
+    height: 34px;
+    padding: 0 3px;
+  }
+
+  .speedBtn {
+    min-width: 42px;
+    height: 34px;
+    padding: 0 5px;
+  }
+
+  .speedBadge {
+    font-size: 0.72rem;
+  }
+
+  .playPauseBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .timelineRow {
+    gap: 8px;
+  }
+
+  .timeText {
+    font-size: 0.75rem;
+    min-width: 34px;
+  }
+
+  .timerBtn span {
+    display: none;
+  }
+
+  .timerBtn {
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .buttonRow {
+    gap: 5px;
+  }
+
+  .controlBtn {
+    min-width: 30px;
+    height: 32px;
+    padding: 0 2px;
+  }
+
+  .speedBtn {
+    min-width: 36px;
+    height: 32px;
+    padding: 0 3px;
+  }
+
+  .speedBadge {
+    font-size: 0.68rem;
+  }
+
+  .playPauseBtn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .numberBadge {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+}
+

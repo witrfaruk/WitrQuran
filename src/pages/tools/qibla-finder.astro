@@ -1,0 +1,222 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import QiblaFinder from '../../components/tools/QiblaFinder';
+import styles from '../../styles/legal.module.css';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'WitrQuran Online Qibla Finder & Kaaba Compass',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All',
+    url: 'https://witrquran.vercel.app/tools/qibla-finder',
+    description: 'Find the exact Qibla direction towards the Holy Kaaba in Makkah from anywhere on Earth using GPS coordinates, interactive visual compass, and spherical trigonometry calculations.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD'
+    }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is the Qibla and why is it essential for Muslim prayer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Qibla (القبلة) is the fixed direction facing the Kaaba inside Al-Masjid Al-Haram in Makkah, Saudi Arabia (coordinates: 21.4225° N, 39.8262° E). Facing the Qibla (Istiqbal al-Qiblah) is a mandatory condition (Shart) for the validity of the five daily obligatory prayers for all Muslims capable of doing so.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What mathematical formula calculates the exact Qibla direction?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Qibla angle is computed using the Great Circle Forward Azimuth formula on a spherical earth model: tan(q) = sin(Δλ) / (cos(φ1)tan(φ2) - sin(φ1)cos(Δλ)), where φ1 is the user’s latitude, φ2 is the Kaaba’s latitude (21.4225° N), and Δλ is the difference in longitude (39.8262° E - user longitude).'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How can you find the Qibla using the sun without a compass or phone?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Twice a year (on approximately May 28 at 12:18 PM Saudi Time and July 16 at 12:27 PM Saudi Time), the sun is at the exact vertical zenith directly over the Kaaba in Makkah. On these two days, any vertical object’s shadow anywhere in the world on the sunlit hemisphere points in the exact opposite direction of the Qibla, providing a direct visual alignment.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What should a Muslim do if they cannot determine the exact Qibla direction?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'If a person is in an unfamiliar location, in transit, or unable to access directional instruments, they must perform Ijtihad (honest effort and best judgment) using available environmental signs (such as the sun, stars, landmarks) and pray in the direction they believe is most likely. Their prayer is religiously valid and does not need to be repeated even if they later discover a slight inaccuracy.'
+        }
+      }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://witrquran.vercel.app'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Islamic Tools',
+        item: 'https://witrquran.vercel.app/tools'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Qibla Finder',
+        item: 'https://witrquran.vercel.app/tools/qibla-finder'
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Qibla Finder Online: Visual Compass & Exact Kaaba Direction Direction"
+  description="Find the precise Qibla direction to the Kaaba in Makkah from anywhere in the world. Free online visual compass with distance, GPS detection, and mathematical azimuth calculations."
+  canonical="https://witrquran.vercel.app/tools/qibla-finder"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class={styles.pageContainer}>
+    <nav class={styles.breadcrumb} aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/tools">Tools</a>
+      <span>/</span>
+      <span>Qibla Finder</span>
+    </nav>
+
+    <header class={styles.header}>
+      <h1 class={styles.title}>Online Qibla Finder &amp; Kaaba Compass</h1>
+      <p style="color: #94a3b8; font-size: 1.05rem; max-width: 760px; line-height: 1.6; margin-top: 0.5rem;">
+        Find the exact direction toward the Holy Kaaba in Makkah from your current location with an interactive compass, live spherical bearing angles, and distance calculations.
+      </p>
+    </header>
+
+    {/* Interactive React Qibla Finder Widget */}
+    <QiblaFinder client:load />
+
+    {/* 900+ Words Deep-Dive Educational Guide */}
+    <article class={styles.content}>
+      <h2>The Significance of the Qibla in Islamic Worship</h2>
+      <p>
+        The <strong>Qibla</strong> (القبلة, meaning "the direction") is the focal orientation towards which nearly two billion Muslims around the globe turn five times each day in their obligatory prayers (Salah), during the slaughtering of halal animals, and when burying the deceased. Facing the Holy Kaaba (<em>Bayt Allah al-Haram</em>) in Makkah, Saudi Arabia, creates an awe-inspiring spiritual and physical unity (<em>Wahdah</em>) across the global Muslim Ummah, transcending geographic, linguistic, and cultural boundaries.
+      </p>
+
+      <p>
+        In Islamic jurisprudence (Fiqh), facing the Qibla—termed <strong>Istiqbal al-Qiblah</strong> (استقبال القبلة)—is one of the indispensable preconditions (Shurut) for the validity of prayer. If a worshiper deliberately faces away from the Qibla without valid excuse, their prayer is considered null and void.
+      </p>
+
+      <h2>The Historic Shift of the Qibla in the Holy Quran</h2>
+      <p>
+        During the early period of Islam in Makkah and for approximately 16 to 17 months after the Hijrah (migration) to Madinah, the Prophet Muhammad ﷺ and the early Muslim community prayed facing <strong>Bayt al-Maqdis</strong> (Al-Masjid Al-Aqsa in Jerusalem). While in Madinah, the Prophet ﷺ yearned in his heart for the Qibla of his forefather Ibrahim (Abraham) AS—the ancient House of Monotheism in Makkah.
+      </p>
+
+      <p>
+        In response to the Prophet's ﷺ silent supplication, Almighty Allah revealed the historic divine command in Surah Al-Baqarah (2:144):
+      </p>
+
+      <blockquote>
+        <p>
+          <em>"We have certainly seen the turning of your face, [O Muhammad], toward the heaven, and We will surely turn you to a qiblah with which you will be pleased. So turn your face toward al-Masjid al-Haram. And wherever you [believers] are, turn your faces toward it [in prayer]."</em> (Surah Al-Baqarah 2:144)
+        </p>
+      </blockquote>
+
+      <p>
+        This historic revelation occurred during prayer at what is known today as <em>Masjid Al-Qiblatayn</em> (The Mosque of the Two Qiblas) in Madinah, where the companions rotated 180 degrees mid-prayer from facing north toward Jerusalem to facing south toward Makkah.
+      </p>
+
+      <h2>The Mathematical Science of Qibla Calculation</h2>
+      <p>
+        Because the Earth is an oblate spheroid, determining the exact line of sight to a single point on the globe requires solving <strong>Great Circle geodesics</strong> through spherical trigonometry. Classical Muslim polymaths—including Al-Battani, Al-Biruni, and Ibn al-Haytham—pioneered sophisticated spherical trigonometric tables to calculate the Qibla for cities across the Islamic world.
+      </p>
+
+      <p>
+        The modern standard Forward Azimuth formula computes the angle $\theta$ (measured in degrees clockwise from True North):
+      </p>
+
+      <div style="background: rgba(2, 12, 18, 0.9); border: 1.5px solid var(--border-neo); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; font-family: monospace; color: var(--emerald-bright); font-size: 0.95rem;">
+        tan(q) = sin(Δλ) / (cos(φ1) · tan(φ2) - sin(φ1) · cos(Δλ))
+      </div>
+
+      <p>Where:</p>
+      <ul>
+        <li><strong>φ1:</strong> Latitude of the user's current location.</li>
+        <li><strong>φ2:</strong> Latitude of the Holy Kaaba = <strong>21.422487° N (21° 25′ 21″ N)</strong>.</li>
+        <li><strong>λ1:</strong> Longitude of the user's current location.</li>
+        <li><strong>λ2:</strong> Longitude of the Holy Kaaba = <strong>39.826206° E (39° 49′ 34″ E)</strong>.</li>
+        <li><strong>Δλ:</strong> Difference in longitude = (λ2 - λ1).</li>
+      </ul>
+
+      <h2>Traditional Methods to Determine Qibla Without Technology</h2>
+      <p>
+        In the absence of digital tools, GPS, or compasses, Islamic scholars throughout history developed reliable natural observation techniques:
+      </p>
+
+      <h3>1. The Bi-Annual Kaaba Solar Zenith (Rasad al-Qiblah)</h3>
+      <p>
+        Due to the Earth's axial tilt (23.44°), the sun's subsolar point passes directly over the latitude of Makkah (21.42° N) twice every year:
+      </p>
+      <ul>
+        <li><strong>May 28 at approximately 12:18 PM Saudi Standard Time (09:18 UTC)</strong></li>
+        <li><strong>July 16 at approximately 12:27 PM Saudi Standard Time (09:27 UTC)</strong></li>
+      </ul>
+      <p>
+        At these two precise moments, the sun stands at a perfect 90° overhead zenith above the Kaaba. In any sunlit location across Europe, Africa, Asia, and the Americas, an observer looking directly at the sun (or looking at the shadow cast in reverse by a vertical pole) is observing the exact 100% true visual vector toward the Kaaba.
+      </p>
+
+      <h3>2. The North Star (Polaris)</h3>
+      <p>
+        In the Northern Hemisphere, Polaris reliably marks True North. For regions west of Makkah (e.g., North Africa), facing east from Polaris points toward the Qibla. For North America, the shortest Great Circle path to Makkah points Northeast (rather than Southeast), a mathematical fact verified by spherical geometry.
+      </p>
+
+      <h2>Jurisprudence Rules When Qibla is Uncertain (Ijtihad)</h2>
+      <p>
+        Islamic law provides clear, practical ease when a Muslim cannot verify the exact Qibla direction:
+      </p>
+      <ul>
+        <li><strong>Close Proximity to Kaaba (Ayn al-Ka'bah):</strong> Those praying inside Al-Masjid Al-Haram in Makkah must align directly with the physical structure of the Kaaba.</li>
+        <li><strong>Distant Locations (Jihaat al-Ka'bah):</strong> For Muslims located far away from Makkah, fulfilling the general directional quadrant (Jihaat) is sufficient according to the Prophet's ﷺ statement: <em>"Whatever is between the East and the West is a Qibla."</em> (Sunan at-Tirmidhi).</li>
+        <li><strong>Extreme Uncertainty:</strong> If all directional methods fail (e.g., in a windowless room or overcast wilderness), the worshiper performs honest estimation (Ijtihad) and prays in the direction they deem most probable. Their prayer is religiously valid and rewarded in full.</li>
+      </ul>
+
+      <h2>Historical Mosque Architecture &amp; Mihrab Alignments</h2>
+      <p>
+        Throughout the classical Islamic Golden Age, prominent Muslim astronomers (<em>Muwaqqit</em>) were officially appointed at major congregational mosques to ensure rigorous Qibla and prayer time precision. Master architects aligned the central prayer niche (<strong>Mihrab</strong>) using celestial orientations, solstice alignments, and stellar coordinates.
+      </p>
+      <p>
+        Notable historical monuments—such as the Great Mosque of Kairouan in Tunisia, the Mosque of Cordoba in Al-Andalus, and the Sultan Ahmed Mosque in Istanbul—stand as enduring testaments to the fusion of sacred devotion and mathematical mastery in early Islamic science.
+      </p>
+
+      <h2>Frequently Asked Questions About Qibla Direction</h2>
+
+      <h3>1. Why does the Qibla from North America face Northeast instead of Southeast?</h3>
+      <p>
+        On a flat 2D Mercator map projection, Makkah appears southeast of North America. However, because the Earth is a 3D sphere, the shortest geodesic trajectory (Great Circle path) from cities like New York, Chicago, or Toronto passes over the North Atlantic and Europe, heading in a <strong>Northeast</strong> direction (approx. 55°–60° from North).
+      </p>
+
+      <h3>2. Does magnetic declination affect compass readings?</h3>
+      <p>
+        Yes. A standard magnetic compass needle aligns with Earth's Magnetic North, which differs from True Geographic North by an angle known as <em>Magnetic Declination</em>. Our online Qibla Finder accounts for true geographic coordinates to provide accurate azimuth bearings.
+      </p>
+
+      <h3>3. Is Salah valid while praying inside an airplane or moving train?</h3>
+      <p>
+        Yes. When traveling on a flight or train, determine the initial Qibla direction before initiating the opening Takbir (Takbirat al-Ihram). If the vessel turns during prayer, scholars state that you may continue your prayer peacefully without interruption.
+      </p>
+    </article>
+  </div>
+</Layout>

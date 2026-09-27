@@ -1,0 +1,526 @@
+.qiblaCard {
+  background: linear-gradient(145deg, rgba(6, 28, 38, 0.95) 0%, rgba(3, 16, 24, 0.98) 100%);
+  border: 2px solid var(--border-neo);
+  box-shadow: 4px 4px 0 var(--shadow-neo);
+  border-radius: 16px;
+  padding: 2.25rem;
+  margin-bottom: 3.5rem;
+  color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.qiblaCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #fbbf24, #34d399, #10b981);
+}
+
+.topControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.locationGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.selectInput {
+  background: #020c12;
+  border: 1.5px solid var(--border-neo);
+  color: #ffffff;
+  padding: 0.65rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.selectInput:focus {
+  border-color: var(--emerald-bright);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.geoBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1.5px solid var(--emerald);
+  color: var(--emerald-bright);
+  padding: 0.65rem 1.15rem;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.geoBtn:hover {
+  background: var(--emerald);
+  color: #03141d;
+  transform: translate(1px, 1px);
+}
+
+.kaabaCoordBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(2, 12, 18, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.kaabaBadgeIcon {
+  font-size: 1rem;
+}
+
+/* Quick Cities Infinite Horizontal Marquee Bar */
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.marqueeContainer::-webkit-scrollbar {
+  display: none !important;
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: max-content;
+  animation: infiniteScroll 32s linear infinite;
+  padding: 0.35rem 0;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes infiniteScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.cityChip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.cityChip:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.cityChipActive {
+  background: var(--emerald) !important;
+  color: #03141d !important;
+  border-color: var(--emerald) !important;
+  font-weight: 800;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+}
+
+/* Compass & Stats Main Grid */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.compassWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.compassOuterBezel {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #083244 0%, #031824 65%, #010a0f 100%);
+  border: 6px solid var(--border-neo);
+  box-shadow: 0 0 45px rgba(16, 185, 129, 0.25), inset 0 0 35px rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.compassAligned {
+  border-color: var(--emerald-bright) !important;
+  box-shadow: 0 0 60px rgba(16, 185, 129, 0.6), inset 0 0 30px rgba(16, 185, 129, 0.3) !important;
+}
+
+.degreeTicks {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+}
+
+.innerRing {
+  position: absolute;
+  inset: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  pointer-events: none;
+}
+
+.cardinalPoints {
+  position: absolute;
+  inset: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.cardinalN {
+  position: absolute;
+  top: 4px;
+  font-weight: 900;
+  color: #ef4444;
+  font-size: 1.3rem;
+  text-shadow: 0 0 12px rgba(239, 68, 68, 0.7);
+}
+
+.cardinalS {
+  position: absolute;
+  bottom: 4px;
+  font-weight: 800;
+  color: #94a3b8;
+  font-size: 1.05rem;
+}
+
+.cardinalE {
+  position: absolute;
+  right: 6px;
+  font-weight: 800;
+  color: #94a3b8;
+  font-size: 1.05rem;
+}
+
+.cardinalW {
+  position: absolute;
+  left: 6px;
+  font-weight: 800;
+  color: #94a3b8;
+  font-size: 1.05rem;
+}
+
+.cardinalNE {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-weight: 700;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.cardinalSE {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-weight: 700;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.cardinalSW {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  font-weight: 700;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.cardinalNW {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-weight: 700;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.needleGroup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.kaabaPointer {
+  position: absolute;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.kaabaIconBox {
+  background: #020c12;
+  border: 2px solid #fbbf24;
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.8);
+  border-radius: 8px;
+  padding: 6px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.needleLine {
+  width: 4px;
+  height: 110px;
+  background: linear-gradient(180deg, #fbbf24 0%, #10b981 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.7);
+}
+
+.compassCenterHub {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid #03141d;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compassCenterCore {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald);
+}
+
+.compassStatusNotice {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alignedBadge {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1.5px solid var(--emerald-bright);
+  color: var(--emerald-bright);
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+  text-align: center;
+}
+
+.headingBadge {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.compassInstruction {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-align: center;
+  max-width: 300px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Stats Info Box */
+.statsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.primaryStatCard {
+  background: linear-gradient(135deg, rgba(6, 36, 48, 0.98) 0%, rgba(2, 14, 20, 0.98) 100%);
+  border: 2px solid var(--emerald);
+  border-radius: 14px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+.statTopBadgeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.statTag {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--emerald-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cardinalPill {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.statAngleValue {
+  font-size: clamp(2.8rem, 6vw, 3.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+}
+
+.statAngleSub {
+  font-size: 1.02rem;
+  color: #cbd5e1;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.secondaryStatsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.subStatItem {
+  background: rgba(2, 12, 18, 0.65);
+  border: 1.5px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.subStatHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.subStatIcon {
+  font-size: 1rem;
+}
+
+.subStatLabel {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.subStatValue {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.subStatSub {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .qiblaCard {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+  }
+
+  .compassOuterBezel {
+    width: 270px;
+    height: 270px;
+  }
+
+  .needleLine {
+    height: 90px;
+  }
+
+  .statAngleValue {
+    font-size: 2.4rem;
+  }
+
+  .secondaryStatsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+

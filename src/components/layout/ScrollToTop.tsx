@@ -1,22 +1,22 @@
-'use client';
-
 import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 
 export default function ScrollToTop() {
-  const pathname = usePathname();
-
   useEffect(() => {
-    // Disable automatic browser scroll restoration to prevent previous scroll positions from being restored
+    if (typeof window === 'undefined') return;
+
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
-  }, []);
 
-  useEffect(() => {
-    // Scroll to top immediately on every route change
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const handlePageLoad = () => {
+      window.scrollTo(0, 0);
+    };
+
+    document.addEventListener('astro:page-load', handlePageLoad);
+    return () => {
+      document.removeEventListener('astro:page-load', handlePageLoad);
+    };
+  }, []);
 
   return null;
 }

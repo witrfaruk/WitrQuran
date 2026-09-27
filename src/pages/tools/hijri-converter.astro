@@ -1,0 +1,283 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HijriConverter from '../../components/tools/HijriConverter';
+import styles from '../../styles/legal.module.css';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'WitrQuran Hijri Date Converter & Islamic Calendar',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All',
+    url: 'https://witrquran.vercel.app/tools/hijri-converter',
+    description: 'Accurate Gregorian to Hijri and Hijri to Gregorian date converter based on the astronomical Umm al-Qura calendar with today’s live Islamic date and sacred month indicators.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD'
+    }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'When was the Islamic Hijri calendar established and by whom?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Islamic Hijri calendar was officially instituted in 16 AH (638 CE) by the Second Rightly Guided Caliph, Sayyiduna Umar ibn al-Khattab (RA), with the unanimous consensus of the Companions (Sahaba). They chose the migration (Hijrah) of Prophet Muhammad ﷺ from Makkah to Madinah in 622 CE as the definitive epoch and starting point of the Islamic era.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Why is the Hijri year 10 to 11 days shorter than the Gregorian solar year?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Islamic calendar is purely lunar, consisting of 12 synodic lunar months alternating between 29 and 30 days. A full lunar year spans approximately 354.36 days, which is roughly 10 to 11 days shorter than the 365.24-day solar Gregorian year. Consequently, Islamic months and holidays cycle through all four solar seasons every 33 solar years.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What are the four Sacred Months (Al-Ashhur Al-Hurum) in the Quran?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Surah At-Tawbah (9:36) establishes four sacred months: 1. Dhul-Qi’dah (11th month), 2. Dhul-Hijjah (12th month - Hajj season), 3. Muharram (1st month - Islamic New Year & Ashura), and 4. Rajab (7th month - isolated sacred month). During these months, warfare and injustice are strictly forbidden, and good deeds earn multiplied divine rewards.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How does the Umm al-Qura calendar calculate month beginnings?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Umm al-Qura calendar (used officially in Saudi Arabia) calculates the start of a lunar month based on astronomical conjunction (birth of the new moon) occurring before sunset at Makkah coordinates and the moon setting after the sun on the 29th day of the preceding month.'
+        }
+      }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://witrquran.vercel.app'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Islamic Tools',
+        item: 'https://witrquran.vercel.app/tools'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Hijri Date Converter',
+        item: 'https://witrquran.vercel.app/tools/hijri-converter'
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Hijri Date Converter: Gregorian to Islamic Date & Today's Calendar"
+  description="Convert Gregorian dates to Hijri and Hijri to Gregorian online. View today's Islamic date in Arabic and English, explore sacred months, and calculate key Islamic calendar events."
+  canonical="https://witrquran.vercel.app/tools/hijri-converter"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class={styles.pageContainer}>
+    <nav class={styles.breadcrumb} aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/tools">Tools</a>
+      <span>/</span>
+      <span>Hijri Date Converter</span>
+    </nav>
+
+    <header class={styles.header}>
+      <h1 class={styles.title}>Hijri Date Converter &amp; Islamic Calendar</h1>
+      <p style="color: #94a3b8; font-size: 1.05rem; max-width: 760px; line-height: 1.6; margin-top: 0.5rem;">
+        Convert dates between the Gregorian and Islamic Hijri calendars. Check today's official Hijri date with regional moon-sighting adjustments and sacred month milestones.
+      </p>
+    </header>
+
+    {/* Interactive React Hijri Converter Widget */}
+    <HijriConverter client:load />
+
+    {/* 900+ Words Deep-Dive Educational Guide */}
+    <article class={styles.content}>
+      <h2>The History and Establishment of the Islamic Hijri Calendar</h2>
+      <p>
+        The <strong>Hijri Calendar</strong> (التقويم الهجري), also known as the Islamic Lunar Calendar, is the sacred chronometric system that governs Islamic religious observances, including the determination of Ramadan fasting, the two Eids (Eid al-Fitr and Eid al-Adha), the sacred pilgrimage (Hajj), and annual Zakat anniversaries.
+      </p>
+
+      <p>
+        Prior to the calendar's formalization, early Arabs identified years by major historical occurrences (such as <em>Am al-Fil</em>, the Year of the Elephant). In 16 AH (638 CE), during the caliphate of <strong>Sayyiduna Umar ibn al-Khattab (RA)</strong>, administrative dispatches arrived from Abu Musa al-Ash'ari noting confusion over undated official documents. Caliph Umar convened the senior Companions of the Prophet ﷺ—including Ali ibn Abi Talib and Uthman ibn Affan (RA)—to establish a unified calendar epoch.
+      </p>
+
+      <p>
+        After deliberating whether to date from the Prophet's ﷺ birth or his receiving of divine revelation, Sayyiduna Ali (RA) proposed dating the calendar from the <strong>Hijrah</strong> (the historic migration of Prophet Muhammad ﷺ from persecution in Makkah to the establishment of the first Islamic commonwealth in Madinah in 622 CE). The Hijrah was unanimously adopted as the turning point that separated truth from falsehood and marked the birth of the global Muslim civilization.
+      </p>
+
+      <h2>Quranic Foundations of the 12 Lunar Months</h2>
+      <p>
+        The Holy Quran explicitly establishes the lunar year as the divinely ordained measure of time for humanity:
+      </p>
+
+      <blockquote>
+        <p>
+          <em>"Indeed, the number of months with Allah is twelve [lunar] months in the register of Allah [from] the day He created the heavens and the earth; of these, four are sacred. That is the correct religion, so do not wrong yourselves during them."</em> (Surah At-Tawbah 9:36)
+        </p>
+      </blockquote>
+
+      <p>In Surah Yunus (10:5), Allah SWT describes the cosmic creation of the sun and moon as celestial timekeepers:</p>
+
+      <blockquote>
+        <p>
+          <em>"It is He who made the sun a shining light and the moon a derived light and determined for it phases - that you may know the number of years and account [of time]. Allah has not created this except in truth."</em> (Surah Yunus 10:5)
+        </p>
+      </blockquote>
+
+      <h2>The Four Sacred Months (Al-Ashhur Al-Hurum)</h2>
+      <p>
+        Within the twelve lunar months, Almighty Allah designated four months as particularly inviolable and sacred (<em>Hurum</em>). In these months, acts of aggression are strictly prohibited, and spiritual devotions earn magnified rewards:
+      </p>
+
+      <ol>
+        <li><strong>Dhul-Qi'dah (ذو القعدة - 11th Month):</strong> The month of resting from travel and preparing for the Hajj pilgrimage.</li>
+        <li><strong>Dhul-Hijjah (ذو الحجة - 12th Month):</strong> The month of the Great Pilgrimage (Hajj), the Day of Arafah (9th), and Eid al-Adha (10th).</li>
+        <li><strong>Muharram (المحرم - 1st Month):</strong> The opening month of the Islamic year, containing the blessed Day of Ashura (10th Muharram).</li>
+        <li><strong>Rajab (رجب - 7th Month):</strong> The isolated sacred month preceding Sha'ban, commemorating the miraculous Night Journey and Ascension (Al-Isra wal-Mi'raj).</li>
+      </ol>
+
+      <h2>The Twelve Months of the Islamic Calendar in Order</h2>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border-neo); text-align: left;">
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">#</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Month (Transliteration)</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Arabic Name</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Key Observances &amp; Virtues</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">1</td>
+            <td style="padding: 0.75rem;"><strong>Muharram</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">المُحَرَّم</td>
+            <td style="padding: 0.75rem;">Sacred month · 1st: Islamic New Year · 10th: Day of Ashura fasting.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">2</td>
+            <td style="padding: 0.75rem;"><strong>Safar</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">صَفَر</td>
+            <td style="padding: 0.75rem;">Second month of the calendar year.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">3</td>
+            <td style="padding: 0.75rem;"><strong>Rabi' al-Awwal</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">رَبِيع الأَوَّل</td>
+            <td style="padding: 0.75rem;">Birth month of the Prophet Muhammad ﷺ (12th Rabi' al-Awwal).</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">4</td>
+            <td style="padding: 0.75rem;"><strong>Rabi' al-Thani</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">رَبِيع الآخِر</td>
+            <td style="padding: 0.75rem;">Also known as Rabi' al-Akhir.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">5</td>
+            <td style="padding: 0.75rem;"><strong>Jumada al-Awwal</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">جُمَادَى الأُولَى</td>
+            <td style="padding: 0.75rem;">Fifth month of the lunar cycle.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">6</td>
+            <td style="padding: 0.75rem;"><strong>Jumada al-Thani</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">جُمَادَى الآخِرَة</td>
+            <td style="padding: 0.75rem;">Also known as Jumada al-Akhirah.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">7</td>
+            <td style="padding: 0.75rem;"><strong>Rajab</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">رَجَب</td>
+            <td style="padding: 0.75rem;">Sacred month · 27th: Al-Isra wal-Mi'raj (Night Journey).</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">8</td>
+            <td style="padding: 0.75rem;"><strong>Sha'ban</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">شَعْبَان</td>
+            <td style="padding: 0.75rem;">Preparation for Ramadan · 15th: Laylat al-Bara'at (Mid-Sha'ban).</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">9</td>
+            <td style="padding: 0.75rem;"><strong>Ramadan</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">رَمَضَان</td>
+            <td style="padding: 0.75rem;">Holy month of Fasting (Sawm) · Revelation of the Quran · Laylat al-Qadr.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">10</td>
+            <td style="padding: 0.75rem;"><strong>Shawwal</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">شَوَّال</td>
+            <td style="padding: 0.75rem;">1st: Eid al-Fitr · Sunnah to fast the Six Days of Shawwal.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;">11</td>
+            <td style="padding: 0.75rem;"><strong>Dhul-Qi'dah</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">ذُو القَعْدَة</td>
+            <td style="padding: 0.75rem;">Sacred month · Pilgrims begin journeying towards Makkah.</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem;">12</td>
+            <td style="padding: 0.75rem;"><strong>Dhul-Hijjah</strong></td>
+            <td style="padding: 0.75rem; font-family: var(--font-arabic); color: var(--emerald-bright);">ذُو الحِجَّة</td>
+            <td style="padding: 0.75rem;">Sacred month · 1st-10th: Best 10 Days · 9th: Day of Arafah · 10th: Eid al-Adha.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Moon Sighting (Ru'yah) vs. Astronomical Calculation (Hisab)</h2>
+      <p>
+        In contemporary Islamic practice, two primary methodologies exist for confirming the start of each lunar month:
+      </p>
+      <ul>
+        <li><strong>Physical Moon Sighting (Ru'yat al-Hilal):</strong> Following the literal instruction of the Prophet Muhammad ﷺ: <em>"Fast when you see the crescent moon and break your fast when you see it."</em> (Sahih al-Bukhari). If clouds obstruct visibility on the 29th evening, the current month is completed as 30 days.</li>
+        <li><strong>Astronomical Calculations (Umm al-Qura Standard):</strong> Using accurate lunar orbital physics to determine when conjunction occurs and whether the crescent moon sets after sunset.</li>
+      </ul>
+      <p>
+        Because local atmospheric visibility varies, our converter provides a <strong>Regional Adjustment Selector (-2 to +2 days)</strong> so you can perfectly calibrate dates according to your local national moon-sighting authority.
+      </p>
+
+      <h2>Sunnah Fasting and the White Days (Ayyam al-Beed)</h2>
+      <p>
+        The Islamic lunar calendar is intimately connected with recommended voluntary worship (Nawafil). The Prophet Muhammad ﷺ strongly encouraged observing voluntary fasting on the <strong>White Days</strong> (<em>Ayyam al-Beed</em> / أَيَّام البِيض), which occur on the <strong>13th, 14th, and 15th nights</strong> of every Islamic lunar month when the full moon (Badr) illuminates the night sky.
+      </p>
+      <p>
+        Abu Dharr (RA) narrated that the Messenger of Allah ﷺ instructed: <em>"If you fast any part of the month, then fast on the thirteenth, fourteenth, and fifteenth."</em> (Sunan an-Nasa'i). Fasting three days of every lunar month is spiritually equivalent to fasting an entire lifetime because every good deed is multiplied tenfold by Allah's infinite mercy.
+      </p>
+
+      <h2>Frequently Asked Questions About the Hijri Calendar</h2>
+
+      <h3>1. How do you convert a Gregorian year to a Hijri year mathematically?</h3>
+      <p>
+        An approximate conversion formula is: <code>Hijri Year ≈ (Gregorian Year - 622) × (33 / 32)</code>. For precise daily conversions, Julian Day Number (JD) algorithms are utilized to map the exact synodic lunar orbital cycles.
+      </p>
+
+      <h3>2. Why does Ramadan occur earlier every year on the solar calendar?</h3>
+      <p>
+        Because the lunar year is 10 to 11 days shorter than the 365-day solar year, every Islamic date moves approximately 10 to 11 days earlier in the Gregorian calendar each successive year, completing a full cycle across all seasons every 33 years.
+      </p>
+
+      <h3>3. What does "AH" stand for in Islamic dates?</h3>
+      <p>
+        "AH" stands for the Latin phrase <em>Anno Hegirae</em> ("In the year of the Hijrah"), corresponding to the Arabic abbreviation (هـ) designating years counted from the Prophet's ﷺ migration to Madinah.
+      </p>
+    </article>
+  </div>
+</Layout>

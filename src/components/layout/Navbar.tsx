@@ -1,126 +1,113 @@
-'use client';
-
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
+import SearchModal from '../navigation/SearchModal';
 import SurahDrawer from '../navigation/SurahDrawer';
-import logoImg from '../../../public/logo.png';
 
 export default function Navbar() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const pathname = usePathname();
-  const isPlayerPage = pathname?.startsWith('/surah/');
+  const [currentPath, setCurrentPath] = useState('/');
 
-  // Close drawer when route changes
   useEffect(() => {
-    if (window.innerWidth < 1024) {
-      setIsDrawerOpen(false);
+    if (typeof window !== 'undefined') {
+      setCurrentPath(window.location.pathname);
+      const handlePathChange = () => {
+        setCurrentPath(window.location.pathname);
+      };
+      window.addEventListener('popstate', handlePathChange);
+      document.addEventListener('astro:page-load', handlePathChange);
+      return () => {
+        window.removeEventListener('popstate', handlePathChange);
+        document.removeEventListener('astro:page-load', handlePathChange);
+      };
     }
-  }, [pathname]);
+  }, []);
 
-  const handleEdgeEnter = () => {
-    if (window.innerWidth >= 1024) {
-      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-      
-      openTimeoutRef.current = setTimeout(() => {
-        setIsDrawerOpen(true);
-      }, 150); // ~150ms delay to prevent accidental activation
-    }
-  };
-
-  const handleEdgeLeave = () => {
-    if (window.innerWidth >= 1024) {
-      if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
-      
-      closeTimeoutRef.current = setTimeout(() => {
-        setIsDrawerOpen(false);
-      }, 200); // 200ms delay to allow cursor movement into the drawer
-    }
-  };
-
-  const handleDrawerEnter = () => {
-    if (window.innerWidth >= 1024) {
-      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    }
-  };
-
-  const handleDrawerLeave = () => {
-    if (window.innerWidth >= 1024) {
-      closeTimeoutRef.current = setTimeout(() => {
-        setIsDrawerOpen(false);
-      }, 200);
-    }
-  };
-
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
+  const isActive = (path: string) => {
+    if (path === '/' && currentPath === '/') return true;
+    if (path !== '/' && currentPath?.startsWith(path)) return true;
+    return false;
   };
 
   return (
     <>
-      {/* Invisible Edge Hover Trigger for Desktop */}
-      <div 
-        className={styles.edgeHoverTrigger}
-        onMouseEnter={handleEdgeEnter}
-        onMouseLeave={handleEdgeLeave}
-        aria-hidden="true"
-      />
-      
-      <header className={`${styles.header} ${isPlayerPage ? styles.hiddenOnMobilePlayer : ''}`}>
-        <div className={`container ${styles.navbar}`}>
+      <header className={styles.header}>
+        <div className={styles.navbarFrame}>
+          {/* Left: Brand Logo & Mobile Toggle */}
           <div className={styles.leftSection}>
             <button 
-              className={styles.hamburgerBtn}
-              onClick={toggleDrawer}
-              onMouseEnter={handleEdgeEnter}
-              onMouseLeave={handleEdgeLeave}
-              aria-label="Toggle Surah Menu"
+              className={styles.mobileMenuBtn}
+              onClick={() => setIsDrawerOpen(true)}
+              aria-label="Open Navigation Drawer"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
             </button>
-            <div className={styles.logoContainer}>
-              <Link href="/">
-                <div className={styles.logo}>
-                  <Image 
-                    src={logoImg} 
-                    alt="WITRQURAN" 
-                    className={styles.logoImage}
-                    priority
-                  />
-                </div>
-              </Link>
-            </div>
+
+            <a href="/" className={styles.brandLink}>
+              <div className={styles.logoImageWrapper}>
+                <img
+                  src="/logo.png"
+                  alt="WitrQuran Logo"
+                  width={42}
+                  height={42}
+                  className={styles.brandLogoImg}
+                />
+                <span className={styles.brandTitle}>WitrQuran</span>
+              </div>
+            </a>
           </div>
 
+          {/* Center: Navigation Links */}
           <nav className={styles.navLinks}>
-            <Link href="/" className={styles.link}>Home</Link>
-            <Link href="/surahs" className={styles.link}>Surahs</Link>
+            <a href="/" className={`${styles.navLink} ${isActive('/') ? styles.activeLink : ''}`}>
+              Home
+            </a>
+            <a href="/surahs" className={`${styles.navLink} ${isActive('/surahs') ? styles.activeLink : ''}`}>
+              Surahs
+            </a>
+            <a href="/tools" className={`${styles.navLink} ${isActive('/tools') ? styles.activeLink : ''}`}>
+              Tools
+            </a>
+            <a href="/about" className={`${styles.navLink} ${isActive('/about') ? styles.activeLink : ''}`}>
+              About
+            </a>
           </nav>
 
+          {/* Right: Search & Start Listening Button */}
           <div className={styles.actions}>
-            <Link href="/surahs" className={styles.listenNow}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 18V5L21 3V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M18 19C19.6569 19 21 17.6569 21 16C21 14.3431 19.6569 13 18 13C16.3431 13 15 14.3431 15 16C15 17.6569 16.3431 19 18 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <button 
+              className={styles.searchBtn}
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Search Surahs"
+              title="Search Surahs"
+            >
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              Listen Now
-            </Link>
+            </button>
+
+            <a href="/surahs" className={styles.startListeningBtn}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>Start Listening</span>
+            </a>
           </div>
         </div>
       </header>
-      
+
+      {/* Interactive Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
+      {/* Mobile Drawer */}
       <SurahDrawer 
         isOpen={isDrawerOpen} 
         onClose={() => setIsDrawerOpen(false)} 
-        onMouseEnter={handleDrawerEnter}
-        onMouseLeave={handleDrawerLeave}
       />
     </>
   );

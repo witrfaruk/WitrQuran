@@ -1,5 +1,5 @@
 import surahsData from '../data/surahs.json';
-import { Surah } from '../types/surah';
+import type { Surah } from '../types/surah';
 import { rawQuotesText } from '../data/rawQuotes';
 
 export interface DailyQuote {

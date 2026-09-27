@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SurahCatalog from '../components/surahs/SurahCatalog';
+import surahsData from '../data/surahs.json';
+import type { Surah } from '../types/surah';
+
+const surahs = surahsData as Surah[];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://witrquran.vercel.app' },
+      { '@type': 'ListItem', position: 2, name: 'All Surahs', item: 'https://witrquran.vercel.app/surahs' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'All 114 Surahs - Complete Quran Audio Recitations',
+    description: 'Complete directory and catalog of all 114 Surahs of the Holy Quran, available for free online listening.',
+    url: 'https://witrquran.vercel.app/surahs',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: 114,
+      itemListElement: surahs.map((s, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: `Surah ${s.transliteration} (${s.arabicName})`,
+        url: `https://witrquran.vercel.app/surah/${s.slug}`,
+      })),
+    },
+  },
+];
+---
+
+<Layout
+  title="All 114 Surahs - Complete Quran Audio Recitations | WITRQURAN"
+  description="Browse and listen to all 114 Surahs of the Holy Quran recited by Sheikh Mahmoud Khalil Al-Hussary. Free, high-quality audio streaming with search and filters."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <SurahCatalog client:load />
+</Layout>

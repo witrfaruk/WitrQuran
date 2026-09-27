@@ -1,0 +1,196 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 10, 15, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5rem 1.5rem 2rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: #061d27;
+  border: 2px solid var(--border-neo);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 620px;
+  box-shadow: 6px 6px 0 var(--shadow-neo);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 2px solid var(--border-neo);
+  background: rgba(4, 24, 34, 0.9);
+}
+
+.searchIcon {
+  color: var(--emerald-bright);
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-family: var(--font-inter);
+  font-weight: 600;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.closeBtn {
+  color: var(--muted);
+  padding: 0.4rem;
+  border: 2px solid var(--border-neo);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.closeBtn:hover {
+  color: #ffffff;
+  border-color: var(--emerald);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.resultsList {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.noResults {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.surahItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  background: rgba(8, 36, 49, 0.7);
+  border: 2px solid var(--border-neo);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.surahItem:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--emerald);
+  transform: translate(1px, 1px);
+}
+
+.itemNumber {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--emerald-bright);
+  background: rgba(4, 24, 34, 0.9);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  border: 1px solid var(--border-neo);
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemTitle {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.itemSubtitle {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.itemArabic {
+  font-family: var(--font-arabic);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.itemPlay {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: var(--emerald);
+  border: 2px solid #03141d;
+  color: #03141d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+  transition: all 0.15s ease;
+}
+
+.surahItem:hover .itemPlay {
+  background: var(--emerald-bright);
+  transform: translate(1px, 1px);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border-top: 2px solid var(--border-neo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: rgba(4, 20, 29, 0.9);
+}
+

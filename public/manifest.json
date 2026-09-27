@@ -1,24 +1,24 @@
 {
-  "name": "WITRQURAN",
+  "name": "WITRQURAN - Free Online Quran Listening",
   "short_name": "WITRQURAN",
-  "description": "A premium, native-feeling application to listen to the Holy Quran.",
+  "description": "Listen to the Holy Quran online for free with high-quality recitation.",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "theme_color": "#121212",
-  "background_color": "#121212",
-  "display": "standalone",
-  "orientation": "portrait",
   "start_url": "/",
-  "scope": "/"
+  "theme_color": "#03141d",
+  "background_color": "#03141d",
+  "display": "standalone",
+  "orientation": "portrait"
 }

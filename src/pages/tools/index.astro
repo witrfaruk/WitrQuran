@@ -1,0 +1,387 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import styles from '../../styles/tools.module.css';
+
+const tools = [
+  {
+    id: 'zakat-calculator',
+    title: 'Zakat Calculator',
+    tag: 'Islamic Finance',
+    description: 'Calculate 2.5% Zakat on cash, gold, silver, investments, and business stock against real-time Nisab thresholds.',
+    link: '/tools/zakat-calculator',
+    cta: 'Calculate Zakat',
+    iconType: 'currency',
+    gradientClass: 'goldIcon',
+    badge: 'Real-Time Nisab',
+  },
+  {
+    id: 'prayer-times',
+    title: 'Prayer Times',
+    tag: 'Daily Salah',
+    description: 'Pinpoint astronomical Fajr, Dhuhr, Asr, Maghrib, and Isha times for any city worldwide with a live countdown.',
+    link: '/tools/prayer-times',
+    cta: 'View Prayer Times',
+    iconType: 'clock',
+    gradientClass: 'cyanIcon',
+    badge: 'Live Countdown',
+  },
+  {
+    id: 'qibla-finder',
+    title: 'Qibla Finder',
+    tag: 'Kaaba Orientation',
+    description: 'Interactive 3D compass dial pointing towards the Holy Kaaba in Makkah with GPS auto-detection and distance.',
+    link: '/tools/qibla-finder',
+    cta: 'Find Qibla Direction',
+    iconType: 'compass',
+    gradientClass: 'emeraldIcon',
+    badge: 'Compass & GPS',
+  },
+  {
+    id: 'hijri-converter',
+    title: 'Hijri Date Converter',
+    tag: 'Lunar Calendar',
+    description: 'Convert between Gregorian and Islamic lunar dates, check today’s live Hijri date, and view sacred month milestones.',
+    link: '/tools/hijri-converter',
+    cta: 'Convert Date',
+    iconType: 'calendar',
+    gradientClass: 'purpleIcon',
+    badge: 'Umm al-Qura',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Islamic Utilities & Tools - WitrQuran',
+    url: 'https://witrquran.vercel.app/tools',
+    description: 'Free online Islamic utilities including Zakat Calculator, Daily Prayer Times, Qibla Compass Finder, and Hijri Date Converter.',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: tools.map((tool, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: tool.title,
+        url: `https://witrquran.vercel.app${tool.link}`,
+        description: tool.description,
+      }))
+    }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'A Comprehensive Guide to Modern Islamic Utilities: Astronomy, Fiqh Calculation, and Daily Worship',
+    description: 'An in-depth 1000-word scholarly and astronomical guide explaining the computational mathematics and fiqh principles behind Zakat, Salah times, Qibla geometry, and the Hijri lunar calendar.',
+    author: {
+      '@type': 'Organization',
+      name: 'WitrQuran Team'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'WitrQuran',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://witrquran.vercel.app/favicon.svg'
+      }
+    },
+    datePublished: '2026-09-27',
+    dateModified: '2026-09-27',
+    mainEntityOfPage: 'https://witrquran.vercel.app/tools'
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Why does WitrQuran provide all tools and recitations 100% free with no monetization?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We believe that the Holy Quran and essential tools for Islamic worship are sacred gifts of God. Charging money or placing commercial barriers on religious obligations is fundamentally against our ethos, so WitrQuran is permanently 100% free and ad-free.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How are Islamic prayer times calculated with astronomical precision?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Prayer times are computed using the observer\'s exact geographic latitude and longitude combined with solar declination and the equation of time. Fajr and Isha correspond to solar depression angles (e.g. 18° or 15° below the horizon), Dhuhr occurs at solar zenith transit, Asr is determined by shadow length ratios, and Maghrib begins immediately after complete sunset.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How does the Qibla calculation work across long distances?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Qibla direction represents the initial forward azimuth along the Great Circle (orthodrome) connecting the user\'s coordinates to the Holy Kaaba in Makkah (21.4225° N, 39.8262° E), calculated via spherical trigonometry.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Which Nisab benchmark should be used for Zakat calculation: Gold or Silver?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Classical scholars traditionally recommend the Silver Nisab (595 grams / 612.36g depending on standard) for cash and liquid wealth because its lower threshold benefits poor and destitute recipients more promptly, whereas the Gold Nisab (85 grams / 87.48g) is commonly used for physical gold holdings.'
+        }
+      }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://witrquran.vercel.app'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Islamic Tools',
+        item: 'https://witrquran.vercel.app/tools'
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Islamic Tools & Utilities: Zakat, Prayer Times, Qibla & Hijri Calendar"
+  description="Essential free Islamic calculation tools designed for daily Muslim worship. Accurate Zakat calculator, real-time prayer schedule, Qibla compass, and Hijri date converter."
+  canonical="https://witrquran.vercel.app/tools"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class={styles.toolsContainer}>
+    <nav class={styles.breadcrumb} aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span>Tools</span>
+    </nav>
+
+    <header class={styles.header}>
+      <h1 class={styles.title}>Islamic Utilities &amp; Daily Tools</h1>
+      <p class={styles.description}>
+        Precision Islamic utilities crafted for daily worship, financial purification, and spiritual clarity. 100% free with no subscriptions or ads, accessible to Muslims worldwide.
+      </p>
+    </header>
+
+    {/* 2x2 Tools Grid */}
+    <div class={styles.toolsGrid}>
+      {tools.map((tool) => (
+        <a href={tool.link} class={styles.toolCard}>
+          <div class={styles.cardTop}>
+            <div class={styles.cardHeaderRow}>
+              <div class={`${styles.iconWrapper} ${styles[tool.gradientClass]}`}>
+                {tool.iconType === 'currency' && (
+                  <span style="font-size: 1.5rem; font-weight: 900;">💰</span>
+                )}
+                {tool.iconType === 'clock' && (
+                  <span style="font-size: 1.5rem; font-weight: 900;">🕌</span>
+                )}
+                {tool.iconType === 'compass' && (
+                  <span style="font-size: 1.5rem; font-weight: 900;">🧭</span>
+                )}
+                {tool.iconType === 'calendar' && (
+                  <span style="font-size: 1.5rem; font-weight: 900;">🌙</span>
+                )}
+              </div>
+              <div class={styles.tagGroup}>
+                <span class={styles.badgePill}>{tool.badge}</span>
+                <span class={styles.tagPill}>{tool.tag}</span>
+              </div>
+            </div>
+
+            <h2 class={styles.cardTitle}>{tool.title}</h2>
+            <p class={styles.cardDescription}>{tool.description}</p>
+          </div>
+
+          <div class={styles.cardFooter}>
+            <span class={styles.ctaText}>
+              <span>{tool.cta}</span>
+              <span class={styles.ctaArrow}>→</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {/* Information showcase section */}
+    <section class={styles.infoSection}>
+      <h2 class={styles.infoTitle}>Engineered for Precision &amp; Spiritual Clarity</h2>
+      <p style="margin: 0; color: #94a3b8; font-size: 1.05rem; line-height: 1.65;">
+        WitrQuran's suite of Islamic tools has been built from the ground up using verified astronomical formulas and authentic Islamic jurisprudence. Private, ad-free, and accessible on any device.
+      </p>
+
+      <div class={styles.featuresGrid}>
+        <div class={styles.featureItem}>
+          <span class={styles.featureIcon}>⚡</span>
+          <h3 class={styles.featureHeading}>Real-Time Client Calculation</h3>
+          <p class={styles.featureText}>Instantaneous mathematical and astronomical algorithms that execute client-side with zero latency or server delays.</p>
+        </div>
+
+        <div class={styles.featureItem}>
+          <span class={styles.featureIcon}>🛡️</span>
+          <h3 class={styles.featureHeading}>100% Privacy Focused</h3>
+          <p class={styles.featureText}>Zero tracking, no mandatory accounts, and no data stored on external servers. Your financial calculations remain completely confidential.</p>
+        </div>
+
+        <div class={styles.featureItem}>
+          <span class={styles.featureIcon}>📖</span>
+          <h3 class={styles.featureHeading}>Authentic Fiqh References</h3>
+          <p class={styles.featureText}>Every utility integrates recognized Islamic jurisprudence conventions, Umm al-Qura lunar rules, and verified Nisab standards.</p>
+        </div>
+      </div>
+    </section>
+
+    {/* Comprehensive 900-1000 Word Scholarly & Astronomical Guide */}
+    <article class={styles.articleSection}>
+      <header class={styles.articleHeader}>
+        <div class={styles.articleBadge}>📚 Scholarly &amp; Astronomical Reference Guide</div>
+        <h2 class={styles.articleMainTitle}>The Science of Islamic Worship: Astronomy, Mathematics, and Fiqh Calculations</h2>
+        <div class={styles.articleMeta}>
+          <span><strong>Author:</strong> WitrQuran Research Team</span>
+          <span>•</span>
+          <span><strong>Category:</strong> Islamic Astronomy &amp; Jurisprudence</span>
+          <span>•</span>
+          <span><strong>Reading Time:</strong> 5–6 minutes (~950 words)</span>
+        </div>
+      </header>
+
+      <div class={styles.articleContent}>
+        <p>
+          For over fourteen centuries, Islamic religious practices have maintained an intimate and foundational relationship with celestial mechanics and mathematical sciences. The daily duties of a Muslim—determining the exact times of the five obligatory prayers (Salah), orienting toward the Holy Kaaba in Makkah (Qibla), observing the lunar months (such as Ramadan and Dhul-Hijjah), and calculating annual wealth purification (Zakat)—require precise observational and mathematical foundations. At WitrQuran, we bridge timeless Islamic traditions with modern computational algorithms, providing Muslims worldwide with accurate, transparent, and completely free digital utilities.
+        </p>
+
+        <div class={styles.quoteBlock}>
+          "It is He who made the sun a shining light and the moon a derived light and determined for it phases—that you may know the number of years and account of time. Allah has not created this except in truth." — <em>Surah Yunus (10:5)</em>
+        </div>
+
+        <h2>1. Diurnal Solar Geometry and Accurate Prayer Times (Salah)</h2>
+        <p>
+          The Islamic schedule of five daily prayers is directly calibrated to the diurnal path of the sun across the celestial sphere. Rather than following arbitrary clock intervals, prayer windows correspond to specific solar altitudes and shadow proportions relative to the observer's geographic coordinates (latitude φ and longitude λ).
+        </p>
+        <p>
+          <strong>Fajr (Dawn Prayer):</strong> Fajr begins at true astronomical twilight (<em>al-Subh al-Sadiq</em>), when the first horizontal threads of white light emerge along the eastern horizon. Mathematically, this occurs when the center of the solar disc reaches a specific depression angle below the horizon—typically 18.0° (Muslim World League / Umm al-Qura standard) or 15.0° (Islamic Society of North America standard).
+        </p>
+        <p>
+          <strong>Dhuhr (Noon Prayer):</strong> Dhuhr commences precisely after the sun culminates and crosses the local celestial meridian (<em>Zawal</em>). At this moment, shadows reach their minimum diurnal length (L_min). A slight buffer of 1 to 2 minutes is added to ensure the solar disc has completely cleared the meridian line.
+        </p>
+        <p>
+          <strong>Asr (Afternoon Prayer):</strong> The timing of Asr is governed by shadow length ratios. Under the standard majority jurisprudence (Shafi'i, Maliki, Hanbali, and modern consensus), Asr begins when the shadow length of a vertical gnomon equals its object height plus its noon shadow: L = H + L_min. In the Hanafi school of thought, Asr begins when the shadow equals twice the object height plus the noon shadow: L = 2H + L_min.
+        </p>
+        <p>
+          <strong>Maghrib and Isha (Evening and Night Prayers):</strong> Maghrib begins immediately when the upper limb of the solar disc sinks below the horizon, taking atmospheric refraction into account. Isha begins when the evening twilight glow (<em>al-Shafaq al-Ahmar</em> or <em>al-Shafaq al-Abyad</em>) completely dissipates, corresponding to solar depression angles of 17.5° to 18.0° below the horizon.
+        </p>
+
+        <h2>2. Spherical Trigonometry and Great Circle Qibla Orientation</h2>
+        <p>
+          Facing the Sacred Mosque in Makkah (<em>al-Masjid al-Haram</em>) is an essential condition (<em>Shart</em>) for the validity of Salah. From any geographic location on Earth, the shortest distance to the Holy Kaaba (21.4225° N, 39.8262° E) is defined by the arc of a Great Circle (orthodrome) on the Earth's ellipsoidal surface.
+        </p>
+        <p>
+          The forward azimuth angle (θ) is computed using spherical trigonometry through the following formula:
+        </p>
+        <p style="background: rgba(2, 10, 15, 0.8); border: 1px solid rgba(16, 185, 129, 0.3); padding: 1rem 1.25rem; border-radius: 8px; font-family: monospace; color: #34d399; font-size: 1.05rem;">
+          θ = atan2(sin(Δλ), cos(φ₁) · tan(φ₂) - sin(φ₁) · cos(Δλ))
+        </p>
+        <p>
+          Where φ₁ and λ₁ represent the observer's latitude and longitude, φ₂ and λ₂ represent the coordinates of the Kaaba, and Δλ = λ₂ - λ₁. Our interactive Qibla Finder uses client-side GPS location sensors and automatically converts true geographic azimuth into magnetic compass bearings using real-time geomagnetic field declination data.
+        </p>
+
+        <h2>3. The Hijri Lunar Calendar Mechanics: Sighting and Conjunctions</h2>
+        <p>
+          The Islamic Hijri calendar is an uncompromised lunar calendar consisting of 12 synodic months totaling 354 or 355 days per year. Because a lunar synodic month lasts approximately 29.53059 days, months alternate between 29 and 30 days.
+        </p>
+        <p>
+          The new Islamic month officially commences following the astronomical conjunction (birth of the new moon) when the razor-thin crescent (<em>Hilal</em>) becomes visible above the western horizon immediately after sunset. The official Umm al-Qura calendar system of Saudi Arabia establishes the first day of the month if the lunar conjunction occurs before sunset in Makkah and moonset occurs after sunset. Our converter provides dynamic offsets to accommodate regional moon-sighting declarations across North America, Europe, Africa, and Asia.
+        </p>
+
+        <h2>4. The Jurisprudence of Zakat: Nisab Benchmarks &amp; Wealth Purification</h2>
+        <p>
+          Zakat represents the third pillar of Islam—an obligatory annual transfer of 2.5% on qualifying surplus wealth held for one complete lunar year (<em>Hawl</em>). To ensure fairness, Zakat is only due if total net assets exceed the threshold of financial sufficiency known as the <strong>Nisab</strong>.
+        </p>
+
+        <div class={styles.tableWrapper}>
+          <table>
+            <thead>
+              <tr>
+                <th>Islamic Utility</th>
+                <th>Primary Parameter</th>
+                <th>Astronomical / Fiqh Benchmark</th>
+                <th>Target Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Zakat Calculator</strong></td>
+                <td>Nisab &amp; Hawl</td>
+                <td>Gold (85g) or Silver (595g) at 2.5%</td>
+                <td>Net obligatory charity payable</td>
+              </tr>
+              <tr>
+                <td><strong>Prayer Times</strong></td>
+                <td>Solar Altitude (α)</td>
+                <td>Zenith, Shadow lengths &amp; Twilight angles</td>
+                <td>Accurate diurnal Salah schedule</td>
+              </tr>
+              <tr>
+                <td><strong>Qibla Finder</strong></td>
+                <td>Great Circle Azimuth</td>
+                <td>Kaaba Coordinates (21.4225° N, 39.8262° E)</td>
+                <td>Precise bearing degree &amp; distance</td>
+              </tr>
+              <tr>
+                <td><strong>Hijri Converter</strong></td>
+                <td>Synodic Moon Orbit</td>
+                <td>Umm al-Qura &amp; Lunar Conjunctions</td>
+                <td>Gregorian to Islamic date parity</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Classical scholars established two primary Nisab benchmarks based on precious metals: <strong>85 grams of pure Gold (24k)</strong> or <strong>595 grams of pure Silver</strong>. Contemporary scholars and Islamic financial bodies widely recommend adopting the Silver Nisab for cash, bank deposits, and liquid investments because it sets a lower qualification threshold, ensuring that more vulnerable individuals receive essential financial support.
+        </p>
+
+        <h2>5. Our Sacred Commitment: 100% Free, Private, and Ad-Free Forever</h2>
+        <p>
+          At WitrQuran, we hold the steadfast conviction that the Holy Quran and all fundamental instruments supporting Islamic worship are sacred gifts of God to humanity. We believe that no entity has the moral authority to commercialize, gatekeep, or extract revenue from the Word of Allah and religious obligations. Consequently, every recitation, audio stream, calculation utility, and educational resource on WitrQuran is offered completely free of charge, with zero advertisements, no premium subscriptions, and zero tracking of personal financial data.
+        </p>
+
+        <h2>Frequently Asked Questions on Islamic Calculations</h2>
+        <div class={styles.faqList}>
+          <div class={styles.faqCard}>
+            <h3 class={styles.faqQuestion}>Why are all WitrQuran tools and recitations 100% free with no monetization?</h3>
+            <p class={styles.faqAnswer}>
+              We believe the Holy Quran is a divine gift of God. We do not feel we have the right or ability to charge money for sacred religious obligations and Quranic recitations. WitrQuran is maintained as an open, ad-free sanctuary for the global Ummah.
+            </p>
+          </div>
+
+          <div class={styles.faqCard}>
+            <h3 class={styles.faqQuestion}>How does high latitude affect Fajr and Isha prayer times?</h3>
+            <p class={styles.faqAnswer}>
+              In regions situated above 48° latitude during summer months, the sun may not dip 18° below the horizon, causing twilight to persist throughout the night. In such locations, prayer calculation conventions utilize nearest-latitude approximations, angle-based rules, or the Middle of the Night (<em>Nisf al-Layl</em>) method to estimate Fajr and Isha.
+            </p>
+          </div>
+
+          <div class={styles.faqCard}>
+            <h3 class={styles.faqQuestion}>Which Nisab standard should I select in the Zakat Calculator?</h3>
+            <p class={styles.faqAnswer}>
+              If your wealth consists primarily of cash, liquid bank balances, and marketable securities, the Silver Nisab (595g) is recommended by major fiqh councils to maximize charitable benefit for the poor. If your assets consist exclusively of physical gold jewelry or bullion, the Gold Nisab (85g) may be applied.
+            </p>
+          </div>
+
+          <div class={styles.faqCard}>
+            <h3 class={styles.faqQuestion}>How accurate is the compass in the Qibla Finder?</h3>
+            <p class={styles.faqAnswer}>
+              The mathematical bearing calculation is accurate to fractions of a degree along the Great Circle. On mobile devices with magnetometer sensors, calibrating your phone by moving it in a figure-eight pattern ensures accurate magnetic alignment free from local electromagnetic interference.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</Layout>

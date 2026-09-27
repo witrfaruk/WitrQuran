@@ -1,0 +1,452 @@
+.toolsContainer {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 3.5vw, 1.5rem) clamp(4rem, 8vw, 7rem);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.78rem, 2vw, 0.85rem);
+  color: var(--muted, #94a3b8);
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.breadcrumb a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--emerald-bright, #34d399);
+}
+
+.header {
+  margin-bottom: clamp(2rem, 4.5vw, 3.5rem);
+  position: relative;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+  line-height: 1.15;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-size: clamp(0.98rem, 2.4vw, 1.15rem);
+  color: #94a3b8;
+  max-width: 760px;
+  line-height: 1.65;
+}
+
+/* Tools Grid */
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.toolCard {
+  background: linear-gradient(145deg, rgba(6, 28, 38, 0.9) 0%, rgba(3, 16, 24, 0.95) 100%);
+  border: 2px solid var(--border-neo);
+  box-shadow: 4px 4px 0 var(--shadow-neo);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 3.5vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+
+.toolCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #34d399, #fbbf24, #10b981);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.toolCard:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow-neo), 0 12px 35px rgba(16, 185, 129, 0.2);
+  border-color: var(--emerald);
+}
+
+.toolCard:hover::before {
+  opacity: 1;
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.cardHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.iconWrapper {
+  width: clamp(48px, 10vw, 56px);
+  height: clamp(48px, 10vw, 56px);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+
+.goldIcon {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.25) 0%, rgba(2, 12, 18, 0.9) 100%);
+  border: 1.5px solid rgba(251, 191, 36, 0.4);
+}
+
+.cyanIcon {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(2, 12, 18, 0.9) 100%);
+  border: 1.5px solid rgba(6, 182, 212, 0.4);
+}
+
+.emeraldIcon {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(2, 12, 18, 0.9) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.4);
+}
+
+.purpleIcon {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(2, 12, 18, 0.9) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.4);
+}
+
+.toolCard:hover .iconWrapper {
+  transform: scale(1.08);
+  box-shadow: 0 0 22px rgba(16, 185, 129, 0.4);
+}
+
+.tagGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.badgePill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.tagPill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.cardTitle {
+  font-size: clamp(1.35rem, 3.5vw, 1.6rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.cardDescription {
+  font-size: clamp(0.92rem, 2.2vw, 1.02rem);
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.cardFooter {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--emerald-bright, #34d399);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.ctaText {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ctaArrow {
+  transition: transform 0.2s ease;
+}
+
+.toolCard:hover .ctaArrow {
+  transform: translateX(5px);
+}
+
+/* Informative Showcase Section */
+.infoSection {
+  background: linear-gradient(145deg, rgba(6, 28, 38, 0.85) 0%, rgba(2, 12, 18, 0.95) 100%);
+  border: 2px solid var(--border-neo);
+  box-shadow: 4px 4px 0 var(--shadow-neo);
+  border-radius: 16px;
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 3.5vw, 2.5rem);
+  color: #cbd5e1;
+  line-height: 1.75;
+  position: relative;
+  overflow: hidden;
+}
+
+.infoTitle {
+  font-size: clamp(1.4rem, 3.8vw, 1.85rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.featureItem {
+  background: rgba(2, 10, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: clamp(1.15rem, 2.5vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featureIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.featureHeading {
+  font-size: clamp(0.98rem, 2.3vw, 1.1rem);
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.featureText {
+  font-size: clamp(0.86rem, 2vw, 0.92rem);
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Article / Guide Blog Section */
+.articleSection {
+  background: linear-gradient(145deg, rgba(6, 28, 38, 0.92) 0%, rgba(2, 12, 18, 0.98) 100%);
+  border: 2px solid var(--border-neo);
+  box-shadow: 4px 4px 0 var(--shadow-neo);
+  border-radius: 16px;
+  padding: clamp(1.75rem, 4.5vw, 3.5rem) clamp(1.15rem, 3.5vw, 3rem);
+  color: #cbd5e1;
+  line-height: 1.8;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.articleSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #fbbf24, #06b6d4, #10b981);
+}
+
+.articleHeader {
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.articleBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin-bottom: 0.85rem;
+}
+
+.articleMainTitle {
+  font-size: clamp(1.5rem, 3.8vw, 2.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+}
+
+.articleMeta {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  font-size: clamp(0.78rem, 2vw, 0.88rem);
+  color: #94a3b8;
+  flex-wrap: wrap;
+}
+
+.articleContent h2 {
+  font-size: clamp(1.3rem, 3.2vw, 1.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: clamp(2rem, 4vw, 2.75rem) 0 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.articleContent h3 {
+  font-size: clamp(1.08rem, 2.6vw, 1.25rem);
+  font-weight: 700;
+  color: var(--emerald-bright, #34d399);
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0.65rem;
+}
+
+.articleContent p {
+  margin-bottom: 1.15rem;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  color: #cbd5e1;
+}
+
+.articleContent strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.quoteBlock {
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 4px solid var(--emerald);
+  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: 0 10px 10px 0;
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+  color: #e2e8f0;
+  font-style: italic;
+  font-size: clamp(0.92rem, 2.2vw, 1.02rem);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin: clamp(1.5rem, 3vw, 2rem) 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(2, 10, 15, 0.7);
+  -webkit-overflow-scrolling: touch;
+}
+
+.tableWrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: clamp(0.82rem, 2vw, 0.95rem);
+  min-width: 520px;
+}
+
+.tableWrapper th {
+  background: rgba(16, 185, 129, 0.15);
+  color: #ffffff;
+  font-weight: 800;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.85rem, 2vw, 1.25rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.tableWrapper td {
+  padding: clamp(0.75rem, 2vw, 0.9rem) clamp(0.85rem, 2vw, 1.25rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+}
+
+.tableWrapper tr:last-child td {
+  border-bottom: none;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 1.75rem;
+}
+
+.faqCard {
+  background: rgba(2, 10, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: clamp(1.15rem, 2.5vw, 1.5rem);
+}
+
+.faqQuestion {
+  font-size: clamp(1.02rem, 2.5vw, 1.15rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.faqAnswer {
+  font-size: clamp(0.88rem, 2.1vw, 0.98rem);
+  color: #94a3b8;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 860px) {
+  .toolsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

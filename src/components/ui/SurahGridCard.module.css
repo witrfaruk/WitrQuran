@@ -1,0 +1,139 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--surface-card);
+  border: 2px solid var(--border-neo);
+  box-shadow: 5px 5px 0 var(--shadow-neo);
+  border-radius: 4px;
+  padding: 1.15rem 1.25rem;
+  text-decoration: none;
+  min-height: 155px;
+  position: relative;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.activeCard {
+  border-color: var(--emerald-bright) !important;
+  background: var(--surface-card-hover) !important;
+  box-shadow: 4px 4px 0 var(--shadow-neo-emerald) !important;
+}
+
+.card:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--emerald);
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--shadow-neo);
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.numberBadge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--emerald-bright);
+  font-family: var(--font-inter);
+  letter-spacing: 0.05em;
+  background: rgba(4, 24, 34, 0.8);
+  border: 1px solid var(--border-neo);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+
+.card:hover .numberBadge {
+  border-color: var(--emerald);
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0.6rem 0;
+}
+
+.arabicName {
+  font-family: var(--font-arabic);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.card:hover .arabicName {
+  color: var(--emerald-bright);
+}
+
+.transliteration {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #c5d8e6;
+  letter-spacing: 0.01em;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.starIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card:hover .starIconWrapper {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.playBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: rgba(4, 24, 34, 0.8);
+  border: 2px solid var(--border-neo);
+  color: var(--emerald-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 2px 2px 0 var(--shadow-neo);
+}
+
+.playBtn svg {
+  margin-left: 1px;
+}
+
+.activePlayBtn {
+  background: var(--emerald) !important;
+  border-color: #03141d !important;
+  color: #03141d !important;
+  box-shadow: 2px 2px 0 var(--shadow-neo) !important;
+}
+
+.activePlayBtn svg {
+  margin-left: 0;
+}
+
+.card:hover .playBtn {
+  background: var(--emerald);
+  border-color: #03141d;
+  color: #03141d;
+  box-shadow: 1px 1px 0 var(--shadow-neo);
+}

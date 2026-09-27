@@ -1,10 +1,7 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import styles from './LastListened.module.css';
-import { storage } from '@/utils/storage';
-import { Surah } from '@/types/surah';
+import { storage } from '../../utils/storage';
+import type { Surah } from '../../types/surah';
 
 export default function LastListened() {
   const [lastListened, setLastListened] = useState<Surah[]>([]);
@@ -31,7 +28,7 @@ export default function LastListened() {
       
       <div className={styles.list}>
         {lastListened.map((surah) => (
-          <Link key={surah.id} href={`/surah/${surah.slug}`} className={styles.listItem}>
+          <a key={surah.id} href={`/surah/${surah.slug}`} className={styles.listItem}>
             <div className={styles.itemLeft}>
               <div className={styles.numberBlock}>{surah.id}</div>
               <div className={styles.surahInfo}>
@@ -48,7 +45,7 @@ export default function LastListened() {
                 </svg>
               </button>
             </div>
-          </Link>
+          </a>
         ))}
       </div>
     </div>

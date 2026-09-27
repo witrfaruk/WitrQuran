@@ -1,0 +1,238 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ZakatCalculator from '../../components/tools/ZakatCalculator';
+import styles from '../../styles/legal.module.css';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'WitrQuran Zakat Calculator',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All',
+    url: 'https://witrquran.vercel.app/tools/zakat-calculator',
+    description: 'Accurate and free online Zakat calculator with gold and silver Nisab thresholds, multi-currency support, and comprehensive Islamic jurisprudence rules.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD'
+    }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is the Nisab threshold for Zakat in 2026?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Nisab threshold is the minimum wealth a Muslim must possess for one full lunar year (Hawl) before Zakat becomes obligatory. In classical Islamic law, it is equivalent to 85 grams of pure gold (approx. 7.5 tolas) or 595 grams of pure silver (approx. 52.5 tolas). Most contemporary scholars recommend calculating Nisab against the silver standard to benefit a greater number of poor and needy recipients.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How is Zakat calculated on stocks and retirement accounts?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'For active trading shares, Zakat is paid at 2.5% on the full current market value. For long-term investment portfolios, mutual funds, or 401(k)/IRA accounts where you do not intend to sell immediately, Zakat is calculated on the underlying zakatable assets (cash, receivables, and inventory), typically estimated between 25% to 30% of the fund’s total value, minus any early withdrawal penalties and taxes if not yet accessible.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Who are the 8 eligible recipients of Zakat mentioned in the Quran?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Surah At-Tawbah (9:60) specifies 8 categories of eligible recipients: 1. Al-Fuqara (The ultra-poor), 2. Al-Masakin (The needy), 3. Amilina Alayha (Zakat administrators), 4. Muallafat al-Qulub (New Muslims or those whose hearts are to be reconciled), 5. Fir-Riqab (Freeing captives and slaves), 6. Al-Gharimin (Those burdened with unpayable debt), 7. Fi Sabilillah (In the cause of Allah), and 8. Ibn As-Sabil (The stranded traveler).'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I pay Zakat on gold jewelry worn for personal use?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'There is a scholarly difference of opinion. In the Hanafi school of jurisprudence, Zakat is obligatory on all gold and silver regardless of whether it is worn as personal jewelry or kept as an investment, provided it reaches the Nisab. In the Shafi’i, Maliki, and Hanbali schools, customary personal jewelry that is worn regularly is exempt from Zakat, whereas excessive jewelry or gold stored for investment remains zakatable.'
+        }
+      }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://witrquran.vercel.app'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Islamic Tools',
+        item: 'https://witrquran.vercel.app/tools'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Zakat Calculator',
+        item: 'https://witrquran.vercel.app/tools/zakat-calculator'
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Zakat Calculator 2026: Accurate 2.5% Calculation & Complete Nisab Guide"
+  description="Calculate your 2.5% Zakat online with real-time Nisab values for gold and silver. Free interactive Zakat calculator with comprehensive Islamic rules, asset guides, and FAQs."
+  canonical="https://witrquran.vercel.app/tools/zakat-calculator"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class={styles.pageContainer}>
+    <nav class={styles.breadcrumb} aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/tools">Tools</a>
+      <span>/</span>
+      <span>Zakat Calculator</span>
+    </nav>
+
+    <header class={styles.header}>
+      <h1 class={styles.title}>Zakat Calculator &amp; Complete Fiqh Guide</h1>
+      <p style="color: #94a3b8; font-size: 1.05rem; max-width: 760px; line-height: 1.6; margin-top: 0.5rem;">
+        Calculate your annual 2.5% Zakat obligation with precision. Enter your cash, gold, silver, business inventory, and investments against modern Nisab thresholds.
+      </p>
+    </header>
+
+    {/* Interactive React Calculator Widget */}
+    <ZakatCalculator client:load />
+
+    {/* 900+ Words Deep-Dive Educational Guide */}
+    <article class={styles.content}>
+      <h2>Understanding Zakat: The Third Pillar of Islam</h2>
+      <p>
+        Zakat (زكاة) is one of the Five Fundamental Pillars of Islam, ordained by Almighty Allah in the Holy Quran as a mandatory act of worship and financial purification for every sane, adult Muslim who possesses wealth above a specific threshold known as <strong>Nisab</strong> for the span of one full lunar year (<strong>Hawl</strong>). The Arabic root word <em>Zaka</em> signifies purification, growth, increase, and blessing.
+      </p>
+
+      <p>
+        In the Holy Quran, the commandment to establish prayer (Salah) is paired directly with the commandment to give Zakat in more than twenty-eight distinct verses. In Surah Al-Baqarah (2:43), Allah SWT commands:
+      </p>
+
+      <blockquote>
+        <p><em>"And establish prayer and give Zakat and bow with those who bow [in worship and obedience]."</em> (Surah Al-Baqarah 2:43)</p>
+      </blockquote>
+
+      <p>
+        Far from being a voluntary charity (Sadaqah), Zakat is a divine right of the impoverished upon the wealth of the affluent. It serves as an economic cornerstone in the Islamic socio-financial system, preventing the monopolization of capital, reducing wealth inequality, and purifying the soul of greed and covetousness.
+      </p>
+
+      <h2>How Nisab Is Defined: Gold vs. Silver Standards</h2>
+      <p>
+        The <strong>Nisab</strong> represents the minimum economic threshold below which a Muslim is exempt from paying Zakat. If your net zakatable wealth equals or exceeds the Nisab threshold on your annual calculation date, you are obligated to pay 2.5% (or one-fortieth) of your total net assets.
+      </p>
+
+      <p>The classical weights established by the Prophet Muhammad ﷺ are:</p>
+      <ul>
+        <li><strong>Gold Nisab:</strong> 20 Mithqals = <strong>85 grams of pure gold</strong> (approximately 2.733 troy ounces or 7.5 tolas).</li>
+        <li><strong>Silver Nisab:</strong> 200 Dirhams = <strong>595 grams of pure silver</strong> (approximately 19.129 troy ounces or 52.5 tolas).</li>
+      </ul>
+
+      <p>
+        In contemporary times, the market value of 85 grams of gold is substantially higher than the market value of 595 grams of silver due to macroeconomic fluctuations. Major global Islamic bodies, including the Islamic Fiqh Academy and prominent scholars, recommend adopting the <strong>Silver Standard</strong> for cash, savings, and liquid wealth. Using the silver Nisab sets a lower eligibility threshold, thereby enabling more Muslims to participate in purifying their wealth and extending vital relief to millions of impoverished families.
+      </p>
+
+      <h2>The Principle of Hawl (The One-Year Holding Period)</h2>
+      <p>
+        Zakat becomes payable only after your wealth has remained at or above the Nisab for a complete lunar year (approximately 354 days). You establish a fixed "Zakat Anniversary" on the Islamic lunar calendar (for example, the 1st or 27th of Ramadan). On that date each year, you calculate the total value of all your qualifying assets, deduct your immediate short-term liabilities, and disburse 2.5% of the remaining balance.
+      </p>
+
+      <h2>Comprehensive Breakdown of Zakatable vs. Non-Zakatable Assets</h2>
+      <p>
+        To compute an accurate Zakat return, it is crucial to distinguish between assets subject to Zakat and personal-use exemptions:
+      </p>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border-neo); text-align: left;">
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Asset Category</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Zakatable Status</th>
+            <th style="padding: 0.75rem; color: var(--emerald-bright);">Calculation Rule</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>Cash &amp; Bank Balances</strong></td>
+            <td style="padding: 0.75rem; color: #34d399;">100% Zakatable</td>
+            <td style="padding: 0.75rem;">Total checking, savings, fixed deposits, and cash in hand.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>Gold &amp; Silver Bullion/Coins</strong></td>
+            <td style="padding: 0.75rem; color: #34d399;">100% Zakatable</td>
+            <td style="padding: 0.75rem;">Valued at current market spot price for pure metal content.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>Business Merchandise &amp; Stock</strong></td>
+            <td style="padding: 0.75rem; color: #34d399;">Zakatable</td>
+            <td style="padding: 0.75rem;">Valued at current wholesale resale value on calculation date.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>Shares &amp; Mutual Funds</strong></td>
+            <td style="padding: 0.75rem; color: #34d399;">Zakatable</td>
+            <td style="padding: 0.75rem;">100% of market value for day-trading, or 25%-30% for long-term holds.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <td style="padding: 0.75rem;"><strong>Primary Residence &amp; Personal Vehicle</strong></td>
+            <td style="padding: 0.75rem; color: #f87171;">Exempt (0%)</td>
+            <td style="padding: 0.75rem;">Personal necessities (Hawa'ij Asliyyah) are fully exempt.</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem;"><strong>Rental Property (Building/Land)</strong></td>
+            <td style="padding: 0.75rem; color: #34d399;">Rental Profit Only</td>
+            <td style="padding: 0.75rem;">The physical property is exempt; net accumulated rental income is zakatable.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>The Eight Eligible Recipients of Zakat in the Holy Quran</h2>
+      <p>
+        Islamic jurisprudence strictly prohibits diverting Zakat funds toward non-qualifying public infrastructure (such as building mosques, schools, or paving roads) because Zakat requires transferring direct ownership (<em>Tamleek</em>) to eligible individuals. Surah At-Tawbah (9:60) specifies the eight divinely ordained categories:
+      </p>
+
+      <blockquote>
+        <p>
+          <em>"Zakat expenditures are only for the poor (Al-Fuqara) and for the needy (Al-Masakin) and for those employed to collect [zakat] and for bringing hearts together [for Islam] and for freeing captives [or slaves] and for those in debt and for the cause of Allah and for the [stranded] traveler - an obligation [imposed] by Allah. And Allah is Knowing and Wise."</em> (Surah At-Tawbah 9:60)
+        </p>
+      </blockquote>
+
+      <ol>
+        <li><strong>Al-Fuqara (The Destitute):</strong> Individuals possessing zero wealth or possessing wealth below the Nisab threshold.</li>
+        <li><strong>Al-Masakin (The Needy):</strong> Individuals whose basic living expenses exceed their earnings, leaving them unable to secure daily subsistence.</li>
+        <li><strong>Amilina Alayha (Zakat Administrators):</strong> Trustworthy workers appointed by legitimate bodies to collect, manage, and disburse Zakat.</li>
+        <li><strong>Mu'allafat al-Qulub (Reconciling Hearts):</strong> New converts facing financial hardship, or individuals whose hearts are being softened toward Islam.</li>
+        <li><strong>Fir-Riqab (Freeing Captives):</strong> Funds used to liberate individuals from human trafficking, forced labor, or wrongful imprisonment.</li>
+        <li><strong>Al-Gharimin (Debt-Ridden):</strong> People overwhelmed by unpayable debts contracted for permissible living needs.</li>
+        <li><strong>Fi Sabilillah (In the Cause of Allah):</strong> Supporting legitimate efforts that defend faith, propagate knowledge, and protect the oppressed.</li>
+        <li><strong>Ibn As-Sabil (The Wayfarer):</strong> Stranded travelers who have run out of funds away from home, even if they are wealthy in their homeland.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions About Zakat</h2>
+
+      <h3>1. Can I pay Zakat in advance before my Hawl anniversary?</h3>
+      <p>
+        Yes. According to the majority of classical scholars, it is permissible and praiseworthy to pay your Zakat in advance—especially in times of crisis, natural disasters, or during the blessed month of Ramadan—provided you already meet the Nisab requirement. On your actual Hawl anniversary date, you conduct a final reconciliation: if your wealth increased, you pay the remaining difference.
+      </p>
+
+      <h3>2. Can Zakat be given to immediate family members?</h3>
+      <p>
+        Zakat <strong>cannot</strong> be given to your direct ascendants (parents, grandparents) or direct descendants (children, grandchildren), nor can it be given to your spouse, because you are already legally and religiously obligated to provide for their maintenance (Nafaqah). However, giving Zakat to eligible extended relatives—such as needy brothers, sisters, uncles, aunts, nephews, and nieces—is doubly rewarded: once for fulfilling Zakat, and once for upholding kinship ties (Silat ar-Rahim).
+      </p>
+
+      <h3>3. What if I forgot to pay Zakat for previous years?</h3>
+      <p>
+        Zakat remains a continuous debt upon your conscience until fulfilled. If you missed paying Zakat for past years, calculate an honest retrospective estimate of your net assets on those dates and disburse the owed amounts promptly to seek forgiveness and purification.
+      </p>
+    </article>
+  </div>
+</Layout>
